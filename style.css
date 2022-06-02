@@ -47,6 +47,8 @@ body {
    z-index: 300;
    transform: translate(-50%, -50%);
    opacity: 0;
+   /* div로 오버라이팅이 되어 있어 pointer-events:none을 하여 hover 효과를 사용할 수 있게 함 */
+   pointer-events: none;
 }
 
 .mouse-circle {
@@ -159,6 +161,10 @@ body {
    background-color: red;
    align-self: center;
    justify-self: center;
+   position: relative;
+   top: 0;
+   left: 0;
+   transition: left 2s, top 2s;
 }
 
 .circle-1 {
@@ -167,6 +173,7 @@ body {
    background-clip: content-box;
    border: .5rem dotted #a14b1a;
    mix-blend-mode: lighten;
+   margin-left: -7rem;
 }
 
 .circle-2 {
@@ -175,6 +182,7 @@ body {
    background-clip: content-box;
    border: .5rem dashed #ffbd07;
    mix-blend-mode: lighten;
+   margin-right: -7rem;
 }
 
 .circle-3 {
@@ -183,6 +191,7 @@ body {
    background-clip: content-box;
    border: 1rem double #9b0e0e;
    mix-blend-mode: lighten;
+   margin-left: -7rem;
 }
 
 .circle-4 {
@@ -190,7 +199,8 @@ body {
    background-size: cover;
    background-clip: content-box;
    border: .7rem double #fff;
-   mix-blend-mode: lighten
+   mix-blend-mode: lighten;
+   margin-right: -7rem;
 }
 
 .main-circle {
@@ -199,12 +209,20 @@ body {
    position: absolute;
    overflow: hidden;
    border-radius: 50%;
+   transition: width 0.2s, height 0.2s;
+}
+
+.main-circle:hover {
+   width: 65rem;
+   height: 65rem;
 }
 
 .main-circle img {
    /* it will allow us to blend the image with this dark background. */
    mix-blend-mode: lighten;
    /* mix-blend-mode: color-dodge; */
+   position: relative;
+   transition: left 2s, top 2s;
 }
 
 /* 서클 애니매이션 종료 */
@@ -232,5 +250,96 @@ body {
 }
 
 /* 카피 문구 종료 */
+
+/* 메인 버튼 */
+.main-btn {
+   position: absolute;
+   bottom: 3rem;
+   width: 13rem;
+   height: 13rem;
+   background-color: #9b0e0e;
+   border-radius: 50%;
+   border: 0.1rem solid #fff;
+   padding: 0.1rem;
+   overflow: hidden;
+}
+
+.main-btn-content {
+   width: 100%;
+   height: 100%;
+   border: 0.2rem dotted #e7be08;
+   border-radius: 50%;
+   /* 버튼을 회전 시킨다. */
+   transform: rotate(40deg);
+   transition: transform 0.2s, border 0.2s;
+}
+
+.main-btn:hover .main-btn-content {
+   transform: rotate(180deg);
+   border: 0.2rem dotted #9b0e0e;
+   transition: transform 0.7s 0.3s, border 0.2s;
+
+}
+
+.main-btn-line {
+   position: absolute;
+   top: 4rem;
+   width: 3rem;
+   height: 0.5rem;
+   border: 0.1rem solid #fff;
+}
+
+.main-btn-line:nth-child(1) {
+   /* rotateZ는 회전 시킨다. */
+   transform: rotateZ(-45deg) translateX(-0.65rem);
+   /* transform의 시작 위치를 변경 시킴 */
+   transform-origin: left center;
+   border-right: none;
+}
+
+.main-btn-line:nth-child(2) {
+   transform: rotateZ(45deg) translateX(0.65rem);
+   transform-origin: right center;
+   border-left: none;
+}
+
+.main-btn-line:nth-child(3) {
+   transform: rotateZ(90deg) translateX(0.5rem);
+   border-left: none;
+}
+
+.main-btn span {
+   position: absolute;
+   bottom: 3rem;
+   color: #fff;
+   font-size: 1.1rem;
+   font-weight: 600;
+   text-transform: uppercase;
+}
+
+.ripple {
+   position: absolute;
+   width: 0;
+   height: 0;
+   background-color: #e7be08;
+   border-radius: 50%;
+   transform: translate(-50%, -50%);
+   /* forwards를 넣으면 애니매이션이 사라지지 않는다. */
+   animation: rippleAnim 0.7s forwards;
+}
+
+@keyframes rippleAnim {
+   0% {
+      width: 0;
+      height: 0;
+   }
+
+   100% {
+      width: 250%;
+      height: 250%;
+   }
+}
+
+/* 메인 버튼 종료 */
 
 /* 섹션 1 종료 */

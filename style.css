@@ -3,7 +3,7 @@
 /* Hi Melody 구글폰트 */
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Inter:wght@400;500;700&family=Nanum+Gothic:wght@400;700;800&family=Rubik:wght@500;600;700&display=swap');
 
-/*? Common Styles */
+/*? 공통 스타일 */
 * {
    margin: 0;
    padding: 0;
@@ -19,19 +19,98 @@ html {
    font-size: 62.5%;
 }
 
-/* 별도의 파란색 배경 */
+.center {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+/* 파란 배경 */
 /* :root {
    --color-bg: #1f1f38;
    --color-bg-variant: #2c2c6c;
 }
+/* 파란 배경 종료 */
+
 body {
    background: var(--color-bg);
    background-image: url(images/bg-texture.png);
-} */
+}
 
-/** End of Common Styles */
+/* 공통 스타일 종료 */
 
-/*? Page BG */
+/*? 마우스 포인터  */
+.mouse-circle,
+.mouse-dot {
+   border-radius: 50%;
+   position: fixed;
+   z-index: 300;
+   transform: translate(-50%, -50%);
+   opacity: 0;
+}
+
+.mouse-circle {
+   width: 6rem;
+   height: 6rem;
+   border: 0.1rem solid #c7a622;
+   animation: mouseCircleAnim 10s infinite linear;
+}
+
+@keyframes mouseCircleAnim {
+   0% {
+      width: 6rem;
+      height: 6rem;
+   }
+
+   25% {
+      width: 8rem;
+      height: 8rem;
+   }
+
+   35% {
+      width: 4rem;
+      height: 4rem;
+   }
+
+   70% {
+      width: 8rem;
+      height: 8rem;
+   }
+
+   100% {
+      width: 6rem;
+      height: 6rem;
+   }
+}
+
+.mouse-dot {
+   width: 0.5rem;
+   height: 0.5rem;
+   background-color: #9b0e0e;
+   position: fixed;
+   animation: mouseDotAnim 10s infinite linear
+}
+
+@keyframes mouseDotAnim {
+   0% {
+      width: 0.5rem;
+      height: 0.5rem;
+   }
+
+   55% {
+      width: 1.5rem;
+      height: 1.5rem;
+   }
+
+   100% {
+      width: 0.5rem;
+      height: 0.5rem;
+   }
+}
+
+/* 마우스 포인터 종료  */
+
+/*? 배경 */
 .page-bg {
    position: fixed;
    width: 100%;
@@ -40,4 +119,118 @@ body {
    background-size: cover;
 }
 
-/** End of Page BG */
+/* 배경 종료 */
+
+/*? 섹션 1 */
+.section-1 {
+   position: relative;
+   width: 100%;
+   height: 100vh;
+}
+
+/* 로고 */
+.logo {
+   position: absolute;
+   top: 2rem;
+   left: 5rem;
+   font-size: 2rem;
+   text-transform: uppercase;
+   color: #fff;
+}
+
+/* 로고 종료 */
+
+/* 서클 애니매이션 */
+.circles {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   grid-template-rows: repeat(2, 1fr);
+}
+
+.circle {
+   width: 22rem;
+   height: 22rem;
+   border-radius: 50%;
+   background-color: red;
+   align-self: center;
+   justify-self: center;
+}
+
+.circle-1 {
+   background: url(images/landing/circle-1.jpeg) center no-repeat;
+   background-size: cover;
+   background-clip: content-box;
+   border: .5rem dotted #a14b1a;
+   mix-blend-mode: lighten;
+}
+
+.circle-2 {
+   background: url(images/landing/developer-4.jpeg) center no-repeat;
+   background-size: cover;
+   background-clip: content-box;
+   border: .5rem dashed #ffbd07;
+   mix-blend-mode: lighten;
+}
+
+.circle-3 {
+   background: url(images/landing/circle-3.jpeg) center no-repeat;
+   background-size: cover;
+   background-clip: content-box;
+   border: 1rem double #9b0e0e;
+   mix-blend-mode: lighten;
+}
+
+.circle-4 {
+   background: url(images/landing/developer-1.jpeg) center no-repeat;
+   background-size: cover;
+   background-clip: content-box;
+   border: .7rem double #fff;
+   mix-blend-mode: lighten
+}
+
+.main-circle {
+   width: 55rem;
+   height: 55rem;
+   position: absolute;
+   overflow: hidden;
+   border-radius: 50%;
+}
+
+.main-circle img {
+   /* it will allow us to blend the image with this dark background. */
+   mix-blend-mode: lighten;
+   /* mix-blend-mode: color-dodge; */
+}
+
+/* 서클 애니매이션 종료 */
+
+/* 카피 문구 */
+.featured-text {
+   font-size: 2rem;
+   color: #fff;
+   text-transform: uppercase;
+   /* 글자 세로 정렬 */
+   width: 0;
+   word-wrap: break-word;
+   /* 글자 간격 설정 */
+   line-height: 3.5;
+}
+
+.featured-text-1 {
+   /* 왼쪽 정렬 */
+   margin: 0 auto 0 10rem;
+}
+
+.featured-text-2 {
+   /* 오른쪽 정렬 */
+   margin: 0 10rem 0 auto;
+}
+
+/* 카피 문구 종료 */
+
+/* 섹션 1 종료 */

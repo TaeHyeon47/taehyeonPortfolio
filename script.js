@@ -228,20 +228,30 @@ document.querySelectorAll('.service-btn').forEach((service) => {
 });
 // End of Section 4
 
-// tttt
-document.querySelectorAll('.service-btn').forEach((service) => {
-  service.addEventListener('click', (e) => {
-    // preventDefault()가 href="#"으로 상위로 이동하는 것도 예방
-    e.preventDefault();
+// Section 5
 
-    const serviceText = service.nextElementSibling;
-    serviceText.classList.toggle('change');
-    // getComputedStyle method returns an object with the values of All Css as properties that the element has
-    // Inside the parentheses
-    const rightPosition = serviceText.classList.contains('change')
-      ? `calc(100% - ${getComputedStyle(service.firstElementChild).width}`
-      : 0;
+// Form
+const formHeading = document.querySelector('.form-heading');
+const formInputs = document.querySelectorAll('.contact-form-input');
 
-    service.firstElementChild.style.right = rightPosition;
+formInputs.forEach((input) => {
+  input.addEventListener('focus', () => {
+    formHeading.style.opacity = '0';
+    setTimeout(() => {
+      formHeading.textContent = `Your ${input.placeholder}`;
+      formHeading.style.opacity = '1';
+    }, 300);
+  });
+
+  input.addEventListener('blur', () => {
+    formHeading.style.opacity = '0';
+    setTimeout(() => {
+      formHeading.textContent = `Let's Talk`;
+      formHeading.style.opacity = '1';
+    }, 300);
   });
 });
+
+// End of Form
+
+// End of Section 5

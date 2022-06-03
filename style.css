@@ -17,7 +17,7 @@
 html {
    /* 1rem = 10px */
    font-size: 62.5%;
-   /* settion3에서 클릭 시, scrollIntoView으로 화면이 이동될때 스무스하게 만들어줌. */
+   /* settion3에서 project 클릭 시, 나오는 화면을 scrollIntoView으로 스크롤을 스무스하게 만들어줌. */
    scroll-behavior: smooth;
 }
 
@@ -236,6 +236,76 @@ body {
 }
 
 /* 배경 종료 */
+
+
+/* Navigation */
+/* Menu Icon */
+.menu-icon {
+   position: fixed;
+   top: 0;
+   right: 6rem;
+   width: 12rem;
+   height: 7rem;
+   /* background-color: red; */
+   flex-direction: column;
+   opacity: 0;
+   visibility: hidden;
+   transition: opacity 0.2s;
+   cursor: pointer;
+
+   /* 마우스 포인터에 가려서 클릭이 안되기 때문에 z-index를 넣음 */
+   z-index: 100;
+}
+
+.menu-icon-line {
+   width: 4rem;
+   height: 0.1rem;
+   background-color: #fff;
+   margin: 0.5rem 0;
+   box-shadow: 0 0.3rem 0.5rem #000;
+}
+
+.show-menu-icon {
+   opacity: 1;
+   visibility: visible;
+}
+
+/* End of Menu Icon */
+
+/* Navbar */
+.navbar {
+   position: fixed;
+   top: 2.5rem;
+   width: 100%;
+   display: flex;
+   justify-content: flex-end;
+   padding-right: 3rem;
+   transition: opacity 0.5s, visibility 0.5s, transform 0.5s;
+
+   /* 마우스 포인터에 가려서 클릭이 안되기 때문에 z-index를 넣음 */
+   z-index: 100;
+}
+
+.navbar-link {
+   font-size: 1.5rem;
+   font-weight: 700;
+   text-transform: uppercase;
+   color: #fff;
+   margin: 0 2.5rem;
+   z-index: 100;
+   text-shadow: 0 0.3rem 0.5rem #000;
+}
+
+.hide-navbar {
+   opacity: 0;
+   visibility: hidden;
+   /* 오른쪽으로 사라지게 만듬 */
+   transform: translateX(10rem);
+}
+
+/* End of Navbar */
+/* End of Navigation */
+
 
 /*? 섹션 1 */
 .section-1 {

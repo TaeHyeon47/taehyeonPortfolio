@@ -208,3 +208,23 @@ projectsBtn.addEventListener('click', (e) => {
 // End of Projects Button
 
 // End of Projects
+
+// Section 4
+document.querySelectorAll('.service-btn').forEach((service) => {
+  service.addEventListener('click', (e) => {
+    // preventDefault()가 href="#"으로 상위로 이동하는 것도 예방
+    e.preventDefault();
+
+    const serviceText = service.nextElementSibling;
+    serviceText.classList.toggle('change');
+    // getComputedStyle method returns an object with the values of All Css as properties that the element has
+    // Inside the parentheses
+    const rightPosition = serviceText.classList.contains('change')
+      ? `calc(100% - ${getComputedStyle(service.firstElementChild).width}`
+      : 0;
+
+    service.firstElementChild.style.right = rightPosition;
+  });
+});
+
+// End of Section 4

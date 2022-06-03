@@ -105,3 +105,56 @@ Array.from(aboutMeTextContent).forEach((char) => {
 });
 
 // End of About Me Text
+
+// Projects
+const container = document.querySelector('.container');
+const projects = document.querySelectorAll('.project');
+const projectHideBtn = document.querySelector('.project-hide-btn');
+
+projects.forEach((project) => {
+  project.addEventListener('mouseenter', () => {
+    // 이미지 픽셀 높이
+    //  console.log(project.firstElementChild.offsetHeight);
+    // 이미지 박스 높이
+    //  console.log(project.offsetHeight);
+    //  firstElementChild으로 이미지에 접근한다.
+    // The value of the top position is going to be negative.
+    // 이미지 높이 - project 박스 높이 = 움직여야할 거리
+    project.firstElementChild.style.top = `-${
+      project.firstElementChild.offsetHeight - project.offsetHeight + 20
+    }px`;
+  });
+
+  project.addEventListener('mouseleave', () => {
+    project.firstElementChild.style.top = '2rem';
+  });
+
+  // Big Project Image
+  project.addEventListener('click', () => {
+    const bigImgWrapper = document.createElement('div');
+    bigImgWrapper.className = 'project-img-wrapper';
+    container.appendChild(bigImgWrapper);
+
+    const bigImg = document.createElement('img');
+    bigImg.className = 'project-img';
+    // split는 기준점을 기준으로 Array를 반환한다.
+    const imgPath = project.firstElementChild.getAttribute('src').split('.')[0];
+
+    console.log(imgPath);
+    bigImg.setAttribute('src', `${imgPath}-big.jpg`);
+    bigImgWrapper.appendChild(bigImg);
+    //  2중 스크롤바를 없애 줌.
+    document.body.style.overflowY = 'hidden';
+
+    projectHideBtn.classList.add('change');
+
+    projectHideBtn.onclick = () => {
+      projectHideBtn.classList.remove('change');
+      bigImgWrapper.remove();
+      document.body.style.overflowY = 'scroll';
+    };
+  });
+  // End of Big Project Image
+});
+
+// End of Projects

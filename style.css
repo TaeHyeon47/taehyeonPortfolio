@@ -311,7 +311,7 @@ body {
 
 .main-circle img {
    /* it will allow us to blend the image with this dark background. */
-   mix-blend-mode: lighten;
+   mix-blend-mode: color-dodge;
    /* mix-blend-mode: color-dodge; */
    position: relative;
    transition: left 2s, top 2s;
@@ -425,9 +425,9 @@ body {
 .section-3 {
    width: 100%;
    height: 100%;
-   padding: 20rem 0 10rem 0;
-
-   /* 백그라운드에 있는 이미지가 relative로 앞으로 나옴 */
+   padding: 10rem 0;
+   margin-top: 10rem;
+   /* 백그라운드 이미지가 relative로 앞으로 나옴 */
    position: relative;
 }
 
@@ -439,7 +439,7 @@ body {
 
 .project {
    width: 40rem;
-   height: 45rem;
+   height: 25rem;
    overflow: hidden;
    margin: 5rem;
    background-color: #000;
@@ -448,6 +448,8 @@ body {
    position: relative;
    border: 0.2rem dotted #9b0e0e;
    border-radius: 0.5rem;
+   cursor: pointer;
+   perspective: 20rem;
 }
 
 .project img {
@@ -455,7 +457,126 @@ body {
    object-fit: cover;
    position: absolute;
    top: 2rem;
+   opacity: 0.5;
+   transition: top 4s 0.2s, opacity 0.5s;
 }
+
+.project:nth-child(odd):hover img {
+   animation: oddImgAnim 4s 0.2s;
+   opacity: 1;
+}
+
+@keyframes oddImgAnim {
+   0% {
+      transform: rotateY(0);
+   }
+
+   25% {
+      transform: rotateY(-2deg) rotateX(2deg);
+   }
+
+   50% {
+      transform: rotateY(2deg) rotateX(-2deg);
+   }
+
+   100% {
+      transform: rotateY(0)
+   }
+}
+
+.project:nth-child(even):hover img {
+   animation: evenImgAnim 4s 0.2s;
+   opacity: 1;
+}
+
+@keyframes evenImgAnim {
+   0% {
+      transform: rotateY(0);
+   }
+
+   25% {
+      transform: rotateY(2deg) rotateX(-2deg);
+   }
+
+   50% {
+      transform: rotateY(-2deg) rotateX(2deg);
+   }
+
+   100% {
+      transform: rotateY(0)
+   }
+}
+
+/* Big Project Image */
+.project-img-wrapper {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 0;
+   background-color: rgba(0, 0, 0, 0.7);
+   animation: imgWrapperAnim 1s forwards;
+   /* wrapper에 올라간 이미지를 스크롤할 수 있게 해줌 */
+   overflow: hidden scroll;
+}
+
+@keyframes imgWrapperAnim {
+   0% {
+      height: 0;
+   }
+
+   100% {
+      height: 100%;
+   }
+}
+
+.project-img {
+   width: 100%;
+   border-radius: 0.5rem;
+   padding: 7rem 20rem;
+   opacity: 0.9;
+   /* 애니매이션 시작점 변환 */
+   transform-origin: top center;
+   animation: imgAnim 1s 1s both;
+}
+
+@keyframes imgAnim {
+   0% {
+      transform: scale(0);
+   }
+
+   100% {
+      transform: scale(1);
+   }
+}
+
+/* End of Big Project Image */
+
+/* Project Hide Button */
+.project-hide-btn {
+   position: fixed;
+   top: 5rem;
+   right: 5rem;
+   background-color: transparent;
+   border: none;
+   color: #fff;
+   font-size: 2rem;
+   letter-spacing: 0.1rem;
+   cursor: pointer;
+   z-index: 10;
+   /* transform: scale(0) 적용시 화면에서 사라짐 */
+   transform: scale(0);
+   visibility: hidden;
+}
+
+.change.project-hide-btn {
+   /* transform: scale(1)로 버튼이 나타남 */
+   transform: scale(1);
+   visibility: visible;
+   transition: transform 0.5s;
+}
+
+/* End of Project Hide Button */
 
 /* End of Projects */
 

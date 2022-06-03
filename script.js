@@ -163,27 +163,45 @@ projects.forEach((project, i) => {
 });
 
 // Projects Button
+const section3 = document.querySelector('.section-3');
 const projectsBtn = document.querySelector('.projects-btn');
 const projectsBtnText = document.querySelector('.projects-btn span');
 let showHideBool = true;
 
+const showProjects = (project, i) => {
+  setTimeout(() => {
+    project.style.display = 'flex';
+    // 스크롤 이동
+    section3.scrollIntoView({ block: 'end' });
+  }, 600);
+
+  setTimeout(() => {
+    project.style.opacity = '1';
+    //  인뎃스 값으로 순서대로 랜딩되도록 함.
+  }, i * 200);
+};
+
+const hideProjects = (project, i) => {
+  setTimeout(() => {
+    project.style.display = 'none';
+    section3.scrollIntoView({ block: 'end' });
+  }, 1200);
+
+  setTimeout(() => {
+    project.style.opacity = '0';
+  }, i * 100);
+};
+
 projectsBtn.addEventListener('click', (e) => {
   e.preventDefault();
-
   projectsBtn.firstElementChild.nextElementSibling.classList.toggle('change');
-
+  showHideBool
+    ? (projectsBtnText.textContent = 'Show Less')
+    : (projectsBtnText.textContent = 'Show More');
   projects.forEach((project, i) => {
-    if (i >= 6) {
-      if (showHideBool) {
-        project.style.display = 'flex';
-        project.style.opacity = '1';
-        projectsBtnText.textContent = 'Show Less';
-      } else {
-        project.style.display = 'none';
-        project.style.opacity = '0';
-        projectsBtnText.textContent = 'Show More';
-      }
-    }
+    // If Else문을 아래와 같이 &&와 3항 연산자로 표현할 수 있다.
+    i >= 6 &&
+      (showHideBool ? showProjects(project, i) : hideProjects(project, i));
   });
   showHideBool = !showHideBool;
 });

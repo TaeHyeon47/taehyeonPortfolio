@@ -17,6 +17,8 @@
 html {
    /* 1rem = 10px */
    font-size: 62.5%;
+   /* settion3에서 클릭 시, scrollIntoView으로 화면이 이동될때 스무스하게 만들어줌. */
+   scroll-behavior: smooth;
 }
 
 .center {
@@ -128,6 +130,26 @@ body {
 }
 
 /* 메인 버튼 종료 */
+
+/* 섹션 헤딩 */
+.section-heading {
+   font-size: 2rem;
+   font-weight: 300;
+   color: #fff;
+   text-transform: uppercase;
+   position: absolute;
+   /* top, left, tranform으로 센터로 보냄*/
+   top: 50%;
+   left: 10rem;
+   transform: translateY(-50%);
+
+   /* width와 wrod-break로 세로 글로 변하게됨 */
+   width: 0;
+   word-break: break-all;
+   line-height: 4;
+}
+
+/* 섹션 헤딩 종료 */
 
 /* 공통 스타일 종료 */
 
@@ -353,23 +375,6 @@ body {
    padding: 10rem 10rem 15rem 10rem;
 }
 
-.section-2-heading {
-   font-size: 2rem;
-   font-weight: 300;
-   color: #fff;
-   text-transform: uppercase;
-   position: absolute;
-   /* top, left, tranform으로 센터로 보냄*/
-   top: 50%;
-   left: 10rem;
-   transform: translateY(-50%);
-
-   /* width와 wrod-break로 세로 글로 변하게됨 */
-   width: 0;
-   word-break: break-all;
-   line-height: 4;
-}
-
 /* About Me Text */
 .about-me-text {
    width: 80%;
@@ -450,6 +455,7 @@ body {
    border-radius: 0.5rem;
    cursor: pointer;
    perspective: 20rem;
+   transition: opacity 0.5s;
 }
 
 .project img {
@@ -586,6 +592,10 @@ body {
 .projects-btn {
    left: 50%;
    transform: translateX(-50%)
+}
+
+.projects-btn .main-btn-line {
+   transition: all 0.5s;
 }
 
 .change>.main-btn-line:nth-child(1) {

@@ -254,4 +254,33 @@ formInputs.forEach((input) => {
 
 // End of Form
 
+// Slideshow
+const slideshow = document.querySelector('.slideshow');
+
+setInterval(() => {
+  const firstIcon = slideshow.firstElementChild;
+  firstIcon.classList.add('faded-out');
+
+  const thirdIcon = slideshow.children[3];
+  thirdIcon.classList.add('light');
+
+  //   const secondIcon = slideshow.children[2];
+  //   secondIcon.classList.remove('light');
+
+  thirdIcon.previousElementSibling.classList.remove('light');
+
+  setTimeout(() => {
+    slideshow.removeChild(firstIcon);
+    //appendChild는 마지막 요소에 추가를 시켜줌.
+    slideshow.appendChild(firstIcon);
+
+    setTimeout(() => {
+      firstIcon.classList.remove('faded-out');
+      firstIcon.classList.remove('light');
+    }, 100);
+  }, 500);
+}, 3000);
+
+// End of Slideshow
+
 // End of Section 5

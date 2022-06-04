@@ -88,6 +88,33 @@ mainBtns.forEach((btn) => {
 
 // End of Main Button
 
+// Progress Bar
+const halfCircles = document.querySelectorAll('.half-circle');
+const halfCirclesTop = document.querySelector('.half-circle-top');
+const progressBarCircle = document.querySelector('.progress-bar-circle');
+
+const progressBarFn = () => {
+  const pageViewportHeight = window.innerHeight;
+  const pageHeight = document.documentElement.scrollHeight;
+  const scrolledPortion = window.pageYOffset;
+
+  const scrolledPortionDegree =
+    (scrolledPortion / (pageHeight - pageViewportHeight)) * 360;
+  console.log(scrolledPortionDegree);
+
+  halfCircles.forEach((el) => {
+    el.style.transform = `rotate(${scrolledPortionDegree}deg)`;
+  });
+
+  if (scrolledPortion >= 180) {
+    halfCircles[0].style.transform = 'rotate(180deg)';
+    halfCirclesTop.style.opacity = '0';
+  } else {
+    halfCirclesTop.style.opacity = '1';
+  }
+};
+// End of Progress Bar
+
 // Navigation
 const menuIcon = document.querySelector('.menu-icon');
 const navbar = document.querySelector('.navbar');
@@ -100,6 +127,7 @@ document.addEventListener('scroll', () => {
     menuIcon.classList.remove('show-menu-icon');
     navbar.classList.remove('hide-navbar');
   }
+  progressBarFn();
 });
 
 menuIcon.addEventListener('click', () => {

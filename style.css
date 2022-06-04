@@ -296,6 +296,9 @@ body {
    color: #fff;
    font-size: 4rem;
    z-index: 200;
+   transition: transform .5s;
+
+   /* visibility: hidden; */
 }
 
 /* End of Progress Bar */

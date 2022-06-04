@@ -89,6 +89,8 @@ mainBtns.forEach((btn) => {
 // End of Main Button
 
 // Progress Bar
+const sections = document.querySelectorAll('section');
+const progressBar = document.querySelector('.progress-bar');
 const halfCircles = document.querySelectorAll('.half-circle');
 const halfCirclesTop = document.querySelector('.half-circle-top');
 const progressBarCircle = document.querySelector('.progress-bar-circle');
@@ -106,13 +108,50 @@ const progressBarFn = () => {
     el.style.transform = `rotate(${scrolledPortionDegree}deg)`;
   });
 
-  if (scrolledPortion >= 180) {
+  if (scrolledPortionDegree >= 180) {
     halfCircles[0].style.transform = 'rotate(180deg)';
     halfCirclesTop.style.opacity = '0';
   } else {
     halfCirclesTop.style.opacity = '1';
   }
+
+  const scrollBool = scrolledPortion + pageViewportHeight === pageHeight;
+
+  // Progress Bar Click
+  progressBar.onclick = (e) => {
+    e.preventDefault();
+    // this section starts from on the entire page and not in the viewport
+    // in order to get this position when the some of the scrawled portion and
+    // distance between the top edge of the viewport and the top position of this section itself.
+    // So, as we said, we have to store these values in the Array.
+    // And for that, I'm going to use one of the Erra helper methods called MUP.
+    //? in order to transform the nodelist into an array, we need to use a right that from method and we
+    const sectionPositions = Array.from(sections).map(
+      (section) => scrolledPortion + section.getBoundingClientRect().top
+    );
+
+    const position = sectionPositions.find((sectionPosition) => {
+      return sectionPosition > scrolledPortion;
+    });
+
+    console.log(position);
+    //  scrollBool ? window.scrollTo()
+    scrollBool ? window.scrollTo(0, 0) : window.scrollTo(0, position);
+  };
+
+  //Arrow Rotation
+
+  if (scrollBool) {
+    progressBarCircle.style.transform = 'rotate(180deg)';
+  } else {
+    progressBarCircle.style.transform = 'rotate(0)';
+  }
+
+  //End of Arrow Rotation
+
+  // Een of Progress Bar Click
 };
+progressBarFn();
 // End of Progress Bar
 
 // Navigation

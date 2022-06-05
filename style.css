@@ -296,7 +296,7 @@ body {
    color: #fff;
    font-size: 4rem;
    z-index: 200;
-   transition: transform .5s;
+   transition: transform 0.5s;
 
    /* visibility: hidden; */
 }
@@ -655,10 +655,13 @@ body {
    left: 0;
    width: 100%;
    height: 0;
+   /* 버튼 클릭 시, 스무스하게 상단으로 올라가게 하기 위함 */
+   scroll-behavior: smooth;
    background-color: rgba(0, 0, 0, 0.7);
    animation: imgWrapperAnim 1s forwards;
    /* wrapper에 올라간 이미지를 스크롤할 수 있게 해줌 */
    overflow: hidden scroll;
+   z-index: 100;
 }
 
 @keyframes imgWrapperAnim {
@@ -679,6 +682,12 @@ body {
    /* 애니매이션 시작점 변환 */
    transform-origin: top center;
    animation: imgAnim 1s 1s both;
+
+   /*? 이미지가 inline 요소인 경우 아래의 코드 값이 맞지 않는다. 
+   "const scrollBool = scrolledPortion + pageViewportHeight === pageHeight;"
+   Y스크롤 픽셀 + 화면 픽셀 === pageHeight이면 scrollBool은 true가 된다. */
+   /*? 따라서 display block로 설정하여 값이 맞도록하여, 버튼의 화살표가 위로 바뀌는 함수를 실행시킨다. */
+   display: block;
 }
 
 @keyframes imgAnim {
@@ -704,7 +713,7 @@ body {
    font-size: 2rem;
    letter-spacing: 0.1rem;
    cursor: pointer;
-   z-index: 10;
+   z-index: 200;
    /* transform: scale(0) 적용시 화면에서 사라짐 */
    transform: scale(0);
    visibility: hidden;

@@ -95,14 +95,27 @@ const halfCircles = document.querySelectorAll('.half-circle');
 const halfCirclesTop = document.querySelector('.half-circle-top');
 const progressBarCircle = document.querySelector('.progress-bar-circle');
 
-const progressBarFn = () => {
+const progressBarFn = (bigImgWrapper = false) => {
+  let pageHeight = 0;
+  let scrolledPortion = 0;
+  // window.innerHeight : 현재 웹브라우저의 화면의 세로 크기 (화면을 확대, 축소하면 크기가 달라지는 것을 확인할 수 있음)
   const pageViewportHeight = window.innerHeight;
-  const pageHeight = document.documentElement.scrollHeight;
-  const scrolledPortion = window.pageYOffset;
+
+  if (!bigImgWrapper) {
+    // document.documentElement : html 전체 요소
+    // Element.scrollHeight : Element의 높이를 반환
+    // document.documentElement.scrollHeight : html 전체 요소의 높이를 반환
+    pageHeight = document.documentElement.scrollHeight;
+    // window.pageYOffset : 세로 axix에 따른 document의 픽셀의 숫자를 반환
+    scrolledPortion = window.pageYOffset;
+  } else {
+    pageHeight = bigImgWrapper.firstElementChild.scrollHeight;
+    // scrollTop은 요소의 콘텐츠의 세로 스크롤의 픽셀수를 반환한다.
+    scrolledPortion = bigImgWrapper.scrollTop;
+  }
 
   const scrolledPortionDegree =
     (scrolledPortion / (pageHeight - pageViewportHeight)) * 360;
-  console.log(scrolledPortionDegree);
 
   halfCircles.forEach((el) => {
     el.style.transform = `rotate(${scrolledPortionDegree}deg)`;
@@ -115,44 +128,43 @@ const progressBarFn = () => {
     halfCirclesTop.style.opacity = '1';
   }
 
+  // 마지막 화면에서 최상단으로 이동하는 로직. (스크롤 Y 픽셀 + 화면 픽셀 === 페이지 전체 높이)
   const scrollBool = scrolledPortion + pageViewportHeight === pageHeight;
 
   // Progress Bar Click
   progressBar.onclick = (e) => {
     e.preventDefault();
-    // this section starts from on the entire page and not in the viewport
-    // in order to get this position when the some of the scrawled portion and
-    // distance between the top edge of the viewport and the top position of this section itself.
-    // So, as we said, we have to store these values in the Array.
-    // And for that, I'm going to use one of the Erra helper methods called MUP.
-    //? in order to transform the nodelist into an array, we need to use a right that from method and we
-    const sectionPositions = Array.from(sections).map(
-      (section) => scrolledPortion + section.getBoundingClientRect().top
-    );
-
-    const position = sectionPositions.find((sectionPosition) => {
-      return sectionPosition > scrolledPortion;
-    });
-
-    console.log(position);
-    //  scrollBool ? window.scrollTo()
-    scrollBool ? window.scrollTo(0, 0) : window.scrollTo(0, position);
+    if (!bigImgWrapper) {
+      //? in order to transform the nodelist into an array, we need to use a right that from method and we
+      const sectionPositions = Array.from(sections).map((section) => {
+        //? getBoundingClientRect()는 화면상(viewport)에 따른 위치 값을 픽셀로 반환한다.
+        // getBoundingClientRect가 상대적 위치 값을 반환하지만 scrolledPortion도 상대적 위치를 반환한다.
+        // 따라서, sectionPositions는 항상 고정 값으로 나오게 된다.
+        return scrolledPortion + section.getBoundingClientRect().top;
+      });
+      const position = sectionPositions.find((sectionPosition) => {
+        // sectionPositions은 항상 고정이기에 scrolledPortion Y 위치 값을 기준으로 로직이 돌아간다.
+        return sectionPosition > scrolledPortion;
+      });
+      scrollBool ? window.scrollTo(0, 0) : window.scrollTo(0, position);
+    } else {
+      scrollBool
+        ? bigImgWrapper.scrollTo(0, 0)
+        : bigImgWrapper.scrollTo(0, bigImgWrapper.scrollHeight);
+    }
   };
+  // End of Progress Bar Click
 
   //Arrow Rotation
-
   if (scrollBool) {
     progressBarCircle.style.transform = 'rotate(180deg)';
   } else {
     progressBarCircle.style.transform = 'rotate(0)';
   }
-
   //End of Arrow Rotation
-
-  // Een of Progress Bar Click
 };
-progressBarFn();
 // End of Progress Bar
+progressBarFn();
 
 // Navigation
 const menuIcon = document.querySelector('.menu-icon');
@@ -161,7 +173,6 @@ const navbar = document.querySelector('.navbar');
 document.addEventListener('scroll', () => {
   menuIcon.classList.add('show-menu-icon');
   navbar.classList.add('hide-navbar');
-  console.log(window.scrollY);
   if (window.scrollY <= 50) {
     menuIcon.classList.remove('show-menu-icon');
     navbar.classList.remove('hide-navbar');
@@ -233,12 +244,20 @@ projects.forEach((project, i) => {
     //  2중 스크롤바를 없애 줌.
     document.body.style.overflowY = 'hidden';
 
+    progressBarFn(bigImgWrapper);
+    bigImgWrapper.onscroll = () => {
+      progressBarFn(bigImgWrapper);
+    };
+
     projectHideBtn.classList.add('change');
 
     projectHideBtn.onclick = () => {
       projectHideBtn.classList.remove('change');
       bigImgWrapper.remove();
       document.body.style.overflowY = 'scroll';
+
+      // 프로젝트 이미지 팝업 화면에서 close 클릭 시, 오른쪽 하단의 버튼의 상태를 업데이트하기 위해 함수를 실행
+      progressBarFn();
     };
   });
   // End of Big Project Image

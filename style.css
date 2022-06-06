@@ -361,6 +361,8 @@ body {
    justify-content: flex-end;
    padding-right: 3rem;
    transition: opacity 0.5s, visibility 0.5s, transform 0.5s;
+   text-decoration: none;
+
 
    /* 마우스 포인터에 가려서 클릭이 안되기 때문에 z-index를 넣음 */
    z-index: 100;
@@ -483,10 +485,12 @@ body {
 
 .main-circle img {
    /* it will allow us to blend the image with this dark background. */
-   mix-blend-mode: color-dodge;
+   mix-blend-mode: lighten;
    /* mix-blend-mode: color-dodge; */
    position: relative;
    transition: left 2s, top 2s;
+   transform: translateX(15%);
+   width: 180%;
 }
 
 /* 서클 애니매이션 종료 */

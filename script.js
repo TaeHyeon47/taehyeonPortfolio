@@ -2,10 +2,10 @@
 const mouseCircle = document.querySelector('.mouse-circle');
 const mouseDot = document.querySelector('.mouse-dot');
 
-let mouseCircleBoll = true;
+let mouseCircleBool = true;
 
 const mouseCircleFn = (x, y) => {
-  mouseCircleBoll &&
+  mouseCircleBool &&
     (mouseCircle.style.cssText = `top: ${y}px; left: ${x}px; opacity: 1`);
 
   mouseDot.style.cssText = `top: ${y}px; left: ${x}px; opacity: 1`;
@@ -90,7 +90,7 @@ const stickyElement = (x, y, hoveredEl) => {
 const mouseCircleTransform = (hoveredEl) => {
   if (hoveredEl.classList.contains('pointer-enter')) {
     hoveredEl.onmousemove = () => {
-      mouseCircleBoll = false;
+      mouseCircleBool = false;
       mouseCircle.style.cssText = `
       width: ${hoveredEl.getBoundingClientRect().width}px; 
       height: ${hoveredEl.getBoundingClientRect().height}px;
@@ -100,11 +100,23 @@ const mouseCircleTransform = (hoveredEl) => {
       transform: translate(0, 0);
       animation: none;
       border-radius: ${getComputedStyle(hoveredEl).borderBottomLeftRadius};
+      transition: width 0.5s, height 0.5s, top 0.5s, left 0.5s, transform 0.5s, border-radius 0.5s; 
       `;
       // .mouse-circle에 transform: translate(-50%, -50%);가 있어 위치가 이상해짐. 0, 0으로 초기화
       //? borderRadius는 모질라와 Firefox에서 작동되지 않음. 따라서 borderBottomLeftRadius으로 변경해서 사용
       // console.log(getComputedStyle(hoveredEl).borderRadius);
       // console.log(getComputedStyle(hoveredEl).borderBottomLeftRadius);
+    };
+
+    hoveredEl.onmouseleave = () => {
+      mouseCircleBool = true;
+    };
+
+    // mouseCircle이 박스에 적용되어 있을 때, 스크롤 업을 했을때 어긋남을 방지함.
+    document.onscroll = () => {
+      if (!mouseCircleBool) {
+        mouseCircle.style.top = `${hoveredEl.getBoundingClientRect().top}px`;
+      }
     };
   }
 };
@@ -322,6 +334,10 @@ projects.forEach((project, i) => {
     document.body.style.overflowY = 'hidden';
 
     document.removeEventListener('scroll', scrollFn);
+
+    // mouseCircle이 프로젝트 박스에 들어가 있는데, 프로젝트를 클릭하여 팝업이 뜨는 경우
+    // 프로젝트 박스 테두리를 없애기 위함.
+    mouseCircle.style.opacity = 0;
 
     progressBarFn(bigImgWrapper);
     bigImgWrapper.onscroll = () => {

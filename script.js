@@ -278,7 +278,7 @@ menuIcon.addEventListener('click', () => {
 // About Me Text
 const aboutMeText = document.querySelector('.about-me-text');
 const aboutMeTextContent =
-  '일은 다소 단순한 DB 검색 및 유지보수 등의 경영지원 사무업무 뿐이라 5년 후의 제 모습이 기대되지 않았습니다. 개인의 성장을 원하여 이직을 생각하였지만 요즘 이슈인 직고용 대상기업 중 하나였기에 회사내부 사정 REACT 하나하나 신경써서 배우고 있습니다. 더 상세한 이력서는 메일로 요청해주세요';
+  '사용자의 관점에서 최적의 UI/UX를 설계할 수 있는 프론트엔드 개발자입니다. 개발 체계의 핵심인 Flow-Chart를 만들 수 있으며, 명확한 커뮤니케이션을 지향하여 협업 능력이 뛰어납니다. 상세한 내용은 메일로 요청 부탁드립니다.';
 
 // Array.from은 String을 배열로 만들어준다. console.log로 확인 가능.
 Array.from(aboutMeTextContent).forEach((char) => {

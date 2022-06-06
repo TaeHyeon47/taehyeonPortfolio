@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Nanum+Gothic:wght@400;700;800&family=Rubik:wght@500;600;700&display=swap');
 /* Hi Melody 구글폰트 */
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Inter:wght@400;500;700&family=Nanum+Gothic:wght@400;700;800&family=Rubik:wght@500;600;700&display=swap');
-테스트
 
 /*? 공통 스타일 */
 * {
@@ -47,7 +46,7 @@ body {
    bottom: 3rem;
    width: 13rem;
    height: 13rem;
-   background-color: #9b0e0e;
+   background-color: rgba(77, 181, 255, 0.4);
    border-radius: 50%;
    border: 0.1rem solid #fff;
    padding: 0.1rem;
@@ -57,7 +56,7 @@ body {
 .main-btn-content {
    width: 100%;
    height: 100%;
-   border: 0.2rem dotted #e7be08;
+   border: 0.2rem dotted #2c2c6c;
    border-radius: 50%;
    /* 버튼을 회전 시킨다. */
    transform: rotate(40deg);
@@ -66,7 +65,8 @@ body {
 
 .main-btn:hover .main-btn-content {
    transform: rotate(180deg);
-   border: 0.2rem dotted #9b0e0e;
+   border: 0.2rem dotted #2c2c6c;
+   ;
    transition: transform 0.7s 0.3s, border 0.2s;
 
 }
@@ -111,7 +111,7 @@ body {
    position: absolute;
    width: 0;
    height: 0;
-   background-color: #e7be08;
+   background-color: #4db5ff;
    border-radius: 50%;
    transform: translate(-50%, -50%);
    /* forwards를 넣으면 애니매이션이 사라지지 않는다. */
@@ -169,7 +169,8 @@ body {
 .mouse-circle {
    width: 6rem;
    height: 6rem;
-   border: 0.1rem solid #c7a622;
+   border: 0.1rem solid rgba(77, 181, 255, 0.4);
+
    animation: mouseCircleAnim 10s infinite linear;
 }
 
@@ -203,7 +204,7 @@ body {
 .mouse-dot {
    width: 0.5rem;
    height: 0.5rem;
-   background-color: #9b0e0e;
+   background-color: #4db5ff;
    position: fixed;
    animation: mouseDotAnim 10s infinite linear
 }
@@ -267,11 +268,11 @@ body {
 }
 
 .half-circle:nth-child(1) {
-   background-color: #b60000;
+   background-color: #4db5ff;
 }
 
 .half-circle:nth-child(2) {
-   background-color: #b60000;
+   background-color: #4db5ff;
 }
 
 .half-circle-top {
@@ -402,7 +403,7 @@ body {
    top: 2rem;
    left: 5rem;
    font-size: 2rem;
-   text-transform: uppercase;
+   /* text-transform: uppercase; */
    color: #fff;
 }
 
@@ -437,25 +438,25 @@ body {
    background: url(images/landing/circle-1.jpeg) center no-repeat;
    background-size: cover;
    background-clip: content-box;
-   border: .5rem dotted #a14b1a;
+   border: .3rem solid #4db5ff;
    mix-blend-mode: lighten;
    margin-left: -7rem;
 }
 
 .circle-2 {
-   background: url(images/landing/developer-4.jpeg) center no-repeat;
+   background: url(images/landing/circle-3.jpeg) center no-repeat;
    background-size: cover;
    background-clip: content-box;
-   border: .5rem dashed #ffbd07;
+   border: .3rem solid #4db5ff;
    mix-blend-mode: lighten;
    margin-right: -7rem;
 }
 
 .circle-3 {
-   background: url(images/landing/circle-3.jpeg) center no-repeat;
+   background: url(images/landing/developer-2.jpeg) center no-repeat;
    background-size: cover;
    background-clip: content-box;
-   border: 1rem double #9b0e0e;
+   border: .3rem solid #4db5ff;
    mix-blend-mode: lighten;
    margin-left: -7rem;
 }
@@ -464,7 +465,7 @@ body {
    background: url(images/landing/developer-1.jpeg) center no-repeat;
    background-size: cover;
    background-clip: content-box;
-   border: .7rem double #fff;
+   border: .3rem solid #4db5ff;
    mix-blend-mode: lighten;
    margin-right: -7rem;
 }
@@ -527,6 +528,7 @@ body {
 .section-2 {
    position: relative;
    padding: 10rem 10rem 15rem 10rem;
+   margin-top: 10rem;
 }
 
 /* About Me Text */
@@ -537,12 +539,12 @@ body {
 
 .about-me-text span {
    /* font-family: 'Hi Melody', cursive; */
-   font-size: 12rem;
+   font-size: 10rem;
    font-weight: bold;
    color: #aaa;
    letter-spacing: 0.5rem;
    line-height: 1.1;
-   text-shadow: 0 0 1rem #9b0e0e;
+   text-shadow: 0 0 1rem #4db5ff;
    position: relative;
    mix-blend-mode: hard-light;
 }
@@ -605,11 +607,19 @@ body {
    display: flex;
    justify-content: center;
    position: relative;
-   border: 0.2rem dotted #9b0e0e;
-   border-radius: 0.5rem;
+   border: 0.1rem solid rgba(77, 181, 255, 0.4);
+   border-radius: 1rem;
    cursor: pointer;
    perspective: 20rem;
    transition: opacity 0.5s;
+}
+
+.project h3 {
+   position: absolute;
+   left: 1.5rem;
+   top: 1.5rem;
+   color: white;
+   font-size: 1.7rem;
 }
 
 .project img {
@@ -789,6 +799,7 @@ body {
    /* position relative으로 백그라운드 뒤에 있던 Section 4의 컨텐츠가 앞으로 나옴 */
    position: relative;
    width: 100%;
+   margin-top: 10rem;
 }
 
 /* Services */
@@ -800,7 +811,7 @@ body {
 .service {
    width: 70%;
    margin: 2rem 0;
-   border-bottom: 0.5rem solid #9b0e0e;
+   border-bottom: 0.5rem solid #4db5ff;
 }
 
 .service-btn {
@@ -816,7 +827,7 @@ body {
    font-size: 10rem;
    font-style: italic;
    font-weight: bold;
-   color: #9b0e0e;
+   color: #4db5ff;
    position: absolute;
    right: 0;
    transition: right 0.5s;
@@ -825,7 +836,7 @@ body {
 
 .service-text {
    font-size: 5rem;
-   color: #777;
+   color: rgba(77, 181, 255, 0.6);
    letter-spacing: 0.1rem;
    height: 0;
    visibility: hidden;
@@ -848,6 +859,7 @@ body {
    position: relative;
    height: 100vh;
    flex-direction: column;
+   margin-top: 10rem;
 }
 
 /* Form */
@@ -855,7 +867,7 @@ body {
    /* font-family: 'Courier New', Courier, monospace; */
    font-size: 6rem;
    font-weight: 400;
-   color: #9b0e0e;
+   color: #4db5ff;
    letter-spacing: 0.3rem;
    margin-bottom: 3rem;
    transition: opacity 0.3s;
@@ -869,8 +881,8 @@ body {
    width: 60rem;
    padding: 0.5rem;
    margin: 1rem 0;
-   background-color: rgba(255, 255, 255, 0.1);
-   border: 0.1rem solid #9b0e0e;
+   background-color: rgba(77, 181, 255, 0.1);
+   border: 0.1rem solid rgba(77, 181, 255, 0.5);
    font-size: 1.7rem;
    font-weight: bold;
    color: #aaa;
@@ -887,7 +899,7 @@ body {
 .form-submit-btn {
    width: 20rem;
    height: 5rem;
-   background-color: #9b0e0e;
+   background-color: #4db5ff;
    border: none;
    /* align-self: flex-start; */
    font-size: 1.8rem;
@@ -898,7 +910,7 @@ body {
 .message {
    font-size: 1.2rem;
    font-weight: 700;
-   color: #f55e5e;
+   color: #4db5ff;
    text-transform: uppercase;
    letter-spacing: 0.1rem;
    margin: 0 auto 1rem 0;

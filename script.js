@@ -52,6 +52,10 @@ document.body.addEventListener('mousemove', (e) => {
   let y = e.clientY;
   mouseCircleFn(x, y);
   animateCircles(e, x, y);
+
+  // Sticky Element
+
+  // End of Sticky Element
 });
 
 document.body.addEventListener('mouseleave', () => {
@@ -95,13 +99,17 @@ const halfCircles = document.querySelectorAll('.half-circle');
 const halfCirclesTop = document.querySelector('.half-circle-top');
 const progressBarCircle = document.querySelector('.progress-bar-circle');
 
-const progressBarFn = (bigImgWrapper = false) => {
+let scrolledPortion = 0;
+let scrollBool = false;
+let imageWrapper = false;
+
+const progressBarFn = (bigImgWrapper) => {
+  imageWrapper = bigImgWrapper;
   let pageHeight = 0;
-  let scrolledPortion = 0;
   // window.innerHeight : 현재 웹브라우저의 화면의 세로 크기 (화면을 확대, 축소하면 크기가 달라지는 것을 확인할 수 있음)
   const pageViewportHeight = window.innerHeight;
 
-  if (!bigImgWrapper) {
+  if (!imageWrapper) {
     // document.documentElement : html 전체 요소
     // Element.scrollHeight : Element의 높이를 반환
     // document.documentElement.scrollHeight : html 전체 요소의 높이를 반환
@@ -109,9 +117,9 @@ const progressBarFn = (bigImgWrapper = false) => {
     // window.pageYOffset : 세로 axix에 따른 document의 픽셀의 숫자를 반환
     scrolledPortion = window.pageYOffset;
   } else {
-    pageHeight = bigImgWrapper.firstElementChild.scrollHeight;
+    pageHeight = imageWrapper.firstElementChild.scrollHeight;
     // scrollTop은 요소의 콘텐츠의 세로 스크롤의 픽셀수를 반환한다.
-    scrolledPortion = bigImgWrapper.scrollTop;
+    scrolledPortion = imageWrapper.scrollTop;
   }
 
   const scrolledPortionDegree =
@@ -129,31 +137,7 @@ const progressBarFn = (bigImgWrapper = false) => {
   }
 
   // 마지막 화면에서 최상단으로 이동하는 로직. (스크롤 Y 픽셀 + 화면 픽셀 === 페이지 전체 높이)
-  const scrollBool = scrolledPortion + pageViewportHeight === pageHeight;
-
-  // Progress Bar Click
-  progressBar.onclick = (e) => {
-    e.preventDefault();
-    if (!bigImgWrapper) {
-      //? in order to transform the nodelist into an array, we need to use a right that from method and we
-      const sectionPositions = Array.from(sections).map((section) => {
-        //? getBoundingClientRect()는 화면상(viewport)에 따른 위치 값을 픽셀로 반환한다.
-        // getBoundingClientRect가 상대적 위치 값을 반환하지만 scrolledPortion도 상대적 위치를 반환한다.
-        // 따라서, sectionPositions는 항상 고정 값으로 나오게 된다.
-        return scrolledPortion + section.getBoundingClientRect().top;
-      });
-      const position = sectionPositions.find((sectionPosition) => {
-        // sectionPositions은 항상 고정이기에 scrolledPortion Y 위치 값을 기준으로 로직이 돌아간다.
-        return sectionPosition > scrolledPortion;
-      });
-      scrollBool ? window.scrollTo(0, 0) : window.scrollTo(0, position);
-    } else {
-      scrollBool
-        ? bigImgWrapper.scrollTo(0, 0)
-        : bigImgWrapper.scrollTo(0, bigImgWrapper.scrollHeight);
-    }
-  };
-  // End of Progress Bar Click
+  scrollBool = scrolledPortion + pageViewportHeight === pageHeight;
 
   //Arrow Rotation
   if (scrollBool) {
@@ -164,13 +148,38 @@ const progressBarFn = (bigImgWrapper = false) => {
   //End of Arrow Rotation
 };
 // End of Progress Bar
+
+// Progress Bar Click
+progressBar.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (!imageWrapper) {
+    //? in order to transform the nodelist into an array, we need to use a right that from method and we
+    const sectionPositions = Array.from(sections).map((section) => {
+      //? getBoundingClientRect()는 화면상(viewport)에 따른 위치 값을 픽셀로 반환한다.
+      // getBoundingClientRect가 상대적 위치 값을 반환하지만 scrolledPortion도 상대적 위치를 반환한다.
+      // 따라서, sectionPositions는 항상 고정 값으로 나오게 된다.
+      return scrolledPortion + section.getBoundingClientRect().top;
+    });
+    const position = sectionPositions.find((sectionPosition) => {
+      // sectionPositions은 항상 고정이기에 scrolledPortion Y 위치 값을 기준으로 로직이 돌아간다.
+      return sectionPosition > scrolledPortion;
+    });
+    scrollBool ? window.scrollTo(0, 0) : window.scrollTo(0, position);
+  } else {
+    scrollBool
+      ? imageWrapper.scrollTo(0, 0)
+      : imageWrapper.scrollTo(0, imageWrapper.scrollHeight);
+  }
+});
+// End of Progress Bar Click
+
 progressBarFn();
 
 // Navigation
 const menuIcon = document.querySelector('.menu-icon');
 const navbar = document.querySelector('.navbar');
 
-document.addEventListener('scroll', () => {
+const scrollFn = () => {
   menuIcon.classList.add('show-menu-icon');
   navbar.classList.add('hide-navbar');
   if (window.scrollY <= 50) {
@@ -178,7 +187,9 @@ document.addEventListener('scroll', () => {
     navbar.classList.remove('hide-navbar');
   }
   progressBarFn();
-});
+};
+
+document.addEventListener('scroll', scrollFn);
 
 menuIcon.addEventListener('click', () => {
   menuIcon.classList.remove('show-menu-icon');
@@ -244,6 +255,8 @@ projects.forEach((project, i) => {
     //  2중 스크롤바를 없애 줌.
     document.body.style.overflowY = 'hidden';
 
+    document.removeEventListener('scroll', scrollFn);
+
     progressBarFn(bigImgWrapper);
     bigImgWrapper.onscroll = () => {
       progressBarFn(bigImgWrapper);
@@ -255,6 +268,8 @@ projects.forEach((project, i) => {
       projectHideBtn.classList.remove('change');
       bigImgWrapper.remove();
       document.body.style.overflowY = 'scroll';
+
+      document.addEventListener('scroll', scrollFn);
 
       // 프로젝트 이미지 팝업 화면에서 close 클릭 시, 오른쪽 하단의 버튼의 상태를 업데이트하기 위해 함수를 실행
       progressBarFn();

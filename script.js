@@ -2,8 +2,12 @@
 const mouseCircle = document.querySelector('.mouse-circle');
 const mouseDot = document.querySelector('.mouse-dot');
 
+let mouseCircleBoll = true;
+
 const mouseCircleFn = (x, y) => {
-  mouseCircle.style.cssText = `top: ${y}px; left: ${x}px; opacity: 1`;
+  mouseCircleBoll &&
+    (mouseCircle.style.cssText = `top: ${y}px; left: ${x}px; opacity: 1`);
+
   mouseDot.style.cssText = `top: ${y}px; left: ${x}px; opacity: 1`;
 };
 // 마우스 포인터 종료
@@ -82,6 +86,31 @@ const stickyElement = (x, y, hoveredEl) => {
   // End of Sticky Element
 };
 
+// Mouse Circle Transform
+const mouseCircleTransform = (hoveredEl) => {
+  if (hoveredEl.classList.contains('pointer-enter')) {
+    hoveredEl.onmousemove = () => {
+      mouseCircleBoll = false;
+      mouseCircle.style.cssText = `
+      width: ${hoveredEl.getBoundingClientRect().width}px; 
+      height: ${hoveredEl.getBoundingClientRect().height}px;
+      top: ${hoveredEl.getBoundingClientRect().top}px;
+      left: ${hoveredEl.getBoundingClientRect().left}px;
+      opacity: 1; 
+      transform: translate(0, 0);
+      animation: none;
+      border-radius: ${getComputedStyle(hoveredEl).borderBottomLeftRadius};
+      `;
+      // .mouse-circle에 transform: translate(-50%, -50%);가 있어 위치가 이상해짐. 0, 0으로 초기화
+      //? borderRadius는 모질라와 Firefox에서 작동되지 않음. 따라서 borderBottomLeftRadius으로 변경해서 사용
+      // console.log(getComputedStyle(hoveredEl).borderRadius);
+      // console.log(getComputedStyle(hoveredEl).borderBottomLeftRadius);
+    };
+  }
+};
+
+// End of Mouse Circle Transform
+
 document.body.addEventListener('mousemove', (e) => {
   let x = e.clientX;
   let y = e.clientY;
@@ -91,6 +120,8 @@ document.body.addEventListener('mousemove', (e) => {
   //? document.elementFromPoint는 마우스 포인터에 있는 DOM 요소를 실시간으로 가져온다.
   const hoveredEl = document.elementFromPoint(x, y);
   stickyElement(x, y, hoveredEl);
+
+  mouseCircleTransform(hoveredEl);
 });
 
 document.body.addEventListener('mouseleave', () => {

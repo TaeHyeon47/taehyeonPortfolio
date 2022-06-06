@@ -614,6 +614,10 @@ body {
    top: 2rem;
    opacity: 0.5;
    transition: top 4s 0.2s, opacity 0.5s;
+   /*? Mouse Circle Transform 기능에서 빠르게 프로젝트 이미지에 마우스를 가져다 대면 */
+   /*? mouseCircleTransform 이벤트가 일어나지 않는다.(마우스 서클이 해당 요소를 감싸지 않는다.) */
+   /*? 따라서 pointer-events: none추가하여, 어떠한 경우에도 서클이 요소를 감싸도록 한다. */
+   pointer-events: none;
 }
 
 .project:nth-child(odd):hover img {

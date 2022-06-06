@@ -240,8 +240,8 @@ body {
 /* Progress Bar */
 .progress-bar {
    position: fixed;
-   bottom: 8rem;
-   right: 8rem;
+   bottom: 4rem;
+   right: 4rem;
    width: 8rem;
    height: 8rem;
    background-color: #fff;
@@ -249,6 +249,8 @@ body {
    z-index: 200;
    /* 도형 2개를 돌아가게 만들고, overflow 히든으로 없애주면 원형이 돌아가면서 채워지는 그림이 만들어진다. */
    overflow: hidden;
+   /* transform 속성으로 요소에 회전, 크기 조절, 기울이기, 이동 효과를 부여할 수 있습니다. */
+   transform: translate(-50%, -50%);
 }
 
 .half-circle, .half-circle-top {
@@ -259,6 +261,8 @@ body {
    height: 100%;
    /* transform-origin은 공부가 필요해보임. */
    transform-origin: right center;
+   pointer-events: none;
+
 }
 
 .half-circle:nth-child(1) {
@@ -299,6 +303,10 @@ body {
    transition: transform 0.5s;
 
    /* visibility: hidden; */
+   /*? Sticky 기능 구현시 document.elementFromPoint으로 현재 DOM요소를 가져오는 부분이 있음  */
+   /*? 하지만 해당 요소가 상위 class='progress-bar' 영역을 가리고 있어 동작되지 않는다. */
+   /*? 따라서 pointer-events: none;를 추가하여 동작되도록 만든다. */
+   pointer-events: none;
 }
 
 /* End of Progress Bar */
@@ -307,8 +315,8 @@ body {
 /* Menu Icon */
 .menu-icon {
    position: fixed;
-   top: 0;
-   right: 6rem;
+   top: 3.5rem;
+   right: 0;
    width: 12rem;
    height: 7rem;
    /* background-color: red; */
@@ -320,6 +328,12 @@ body {
 
    /* 마우스 포인터에 가려서 클릭이 안되기 때문에 z-index를 넣음 */
    z-index: 100;
+
+   /*? Sticky Element 구현 시, hoveredEl.style.cssText = `top: ${y}px; left: ${x}px`; 코드가 있다. */
+   /*? 해당 코드로 메뉴아이콘이 마우스를 따라다니는데 위치가 이상하다. */
+   /*? transform: translate(-50%, -50%);을 넣으면 정상적인 위치가 된다. */
+   /* 참고 : transform: translate(-50%, -50%);으로 인해 top과 right 값을 변경해야한다. */
+   transform: translate(-50%, -50%);
 }
 
 .menu-icon-line {

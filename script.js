@@ -47,15 +47,50 @@ const animateCircles = (e, x, y) => {
 };
 // 서클 애니매이션 종료
 
+let hoveredElPosition = [];
+
+const stickyElement = (x, y, hoveredEl) => {
+  // Sticky Element
+  if (hoveredEl.classList.contains('sticky')) {
+    //  if (hoveredElPosition.length < 1) {
+    //    hoveredElPosition = [hoveredEl.offsetTop, hoveredEl.offsetLeft];
+    //  }
+    //? 상기의 if문을 아래와 같이 && 연산자로 변경할 수 있음.
+    hoveredElPosition.length < 1 &&
+      (hoveredElPosition = [hoveredEl.offsetTop, hoveredEl.offsetLeft]);
+
+    //? cssText는 한번에 여러개의 css 요소를 변경해준다. '-'을 케멀케이스로 변경해주지 않아도 된다.
+    //? 해당 코드로 메뉴 아이콘에 마우스를 올렸을 시, 메뉴 아이콘이 마우스를 따라다닌다.
+    hoveredEl.style.cssText = `top: ${y}px; left: ${x}px`;
+
+    if (
+      hoveredEl.offsetTop <= hoveredElPosition[0] - 100 ||
+      hoveredEl.offsetTop >= hoveredElPosition[0] + 100 ||
+      hoveredEl.offsetLeft <= hoveredElPosition[1] - 100 ||
+      hoveredEl.offsetLeft >= hoveredElPosition[1] + 100
+    ) {
+      hoveredEl.style.cssText = '';
+      hoveredElPosition = [];
+    }
+
+    // 마우스를 위로 또는 아래로 움직여 브라우저 즐겨찾기와 주소 영역으로 이동했을때 발생하는 버그 방지
+    hoveredEl.onmouseleave = () => {
+      hoveredEl.style.cssText = '';
+      hoveredElPosition = [];
+    };
+  }
+  // End of Sticky Element
+};
+
 document.body.addEventListener('mousemove', (e) => {
   let x = e.clientX;
   let y = e.clientY;
   mouseCircleFn(x, y);
   animateCircles(e, x, y);
 
-  // Sticky Element
-
-  // End of Sticky Element
+  //? document.elementFromPoint는 마우스 포인터에 있는 DOM 요소를 실시간으로 가져온다.
+  const hoveredEl = document.elementFromPoint(x, y);
+  stickyElement(x, y, hoveredEl);
 });
 
 document.body.addEventListener('mouseleave', () => {

@@ -486,4 +486,63 @@ setInterval(() => {
 
 // End of Slideshow
 
+// Form Validation
+const form = document.querySelector('.contact-form');
+const username = document.getElementById('name');
+const email = document.getElementById('email');
+const subject = document.getElementById('subject');
+const message = document.getElementById('message');
+const messages = document.querySelectorAll('.message');
+
+const error = (input, message) => {
+  input.nextElementSibling.classList.add('error');
+  input.nextElementSibling.textContent = message;
+};
+
+const success = (input) => {
+  input.nextElementSibling.classList.remove('error');
+};
+
+const checkRequiredFields = (inputArr) => {
+  inputArr.forEach((input) => {
+    if (input.value.trim() === '') {
+      error(input, `${input.id}를 입력해주세요.`);
+    }
+    //  이걸 넣으니 최종 성공으로 되어 checkLength 함수가 작동하지 않는다.
+    //  else {
+    //    success(input);
+    //  }
+  });
+};
+
+const checkLength = (input, min) => {
+  if (input.value.trim().length < min) {
+    error(input, `${input.id}의 값은 ${min}자 이상 작성되어야 합니다.`);
+  } else {
+    success(input);
+  }
+};
+
+const checkEmail = (input) => {
+  const regEx =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  if (regEx.test(input.value.trim())) {
+    success(input);
+  } else {
+    error(input, '이메일이 유효하지 않습니다.');
+  }
+};
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  checkLength(username, 2);
+  checkLength(subject, 2);
+  checkLength(message, 10);
+  checkEmail(email);
+  checkRequiredFields([username, email, subject, message]);
+});
+// End of Form Validation
+
 // End of Section 5

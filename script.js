@@ -1,3 +1,6 @@
+import emailjs from 'emailjs-com';
+import $ from 'jquery';
+
 // 마우스 포인터
 const mouseCircle = document.querySelector('.mouse-circle');
 const mouseDot = document.querySelector('.mouse-dot');
@@ -546,3 +549,24 @@ form.addEventListener('submit', (e) => {
 // End of Form Validation
 
 // End of Section 5
+
+// Email JS
+(function () {
+  emailjs.init('6KKCgI7PUt4VgBw8A');
+
+  var templateParams = {
+    name: 'James',
+    notes: 'Check this out!',
+  };
+
+  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams).then(
+    function (response) {
+      console.log('SUCCESS!', response.status, response.text);
+    },
+    function (error) {
+      console.log('FAILED...', error);
+    }
+  );
+})();
+
+// End of Email JS

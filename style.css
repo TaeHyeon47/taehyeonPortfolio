@@ -598,28 +598,79 @@ body {
    padding-bottom: 15rem;
 }
 
+.project-wrapper {
+   padding: 2rem 1.7rem 2rem 1.7rem;
+   background-color: #2c2c6c;
+   border-radius: 5rem;
+   height: 52rem;
+   margin: 5rem;
+}
+
+.project-wrapper h2 {
+   margin: 3rem 0 0 2rem;
+   color: white;
+   font-size: 2rem;
+}
+
+.project-wrapper p {
+   margin: 2rem 0 0 2rem;
+   max-width: 37rem;
+   color: white;
+   font-size: 1.3rem;
+}
+
+.btn-github {
+   height: 4.2rem;
+   width: 9rem;
+   font-size: 1.8rem;
+   border-radius: 0.7rem;
+   background-color: #2c2c6c;
+   border: 0.1rem solid #4db5ff;
+   color: #4db5ff;
+   margin: 3rem 1rem 0 2rem;
+   transition: background-color 0.5s;
+   cursor: pointer;
+}
+
+.btn-github:hover {
+   background-color: #fff;
+   border: 0.1rem solid #fff;
+   color: #000;
+}
+
+.btn-livedemo {
+   height: 4.2rem;
+   width: 11rem;
+   font-size: 1.8rem;
+   border-radius: 0.7rem;
+   background-color: #4db5ff;
+   border: 0.1rem;
+   transition: background-color 0.5s;
+   cursor: pointer;
+   color: rgb(47, 47, 47);
+
+}
+
+.btn-livedemo:hover {
+   background-color: #fff;
+   border: 0.1rem solid #fff;
+   color: #000;
+}
+
 .project {
    width: 40rem;
-   height: 25rem;
+   height: 27rem;
    overflow: hidden;
-   margin: 5rem;
+   /* margin: 5rem; */
    background-color: #000;
    display: flex;
    justify-content: center;
    position: relative;
    border: 0.1rem solid rgba(77, 181, 255, 0.4);
-   border-radius: 1rem;
+   border-radius: 5rem;
    cursor: pointer;
    perspective: 20rem;
    transition: opacity 0.5s;
-}
-
-.project h3 {
-   position: absolute;
-   left: 1.5rem;
-   top: 1.5rem;
-   color: white;
-   font-size: 1.7rem;
 }
 
 .project img {

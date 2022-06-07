@@ -441,7 +441,7 @@ formInputs.forEach((input) => {
   input.addEventListener('focus', () => {
     formHeading.style.opacity = '0';
     setTimeout(() => {
-      formHeading.textContent = `Your ${input.placeholder}`;
+      formHeading.textContent = `${input.placeholder}을 입력해주세요!`;
       formHeading.style.opacity = '1';
     }, 300);
   });
@@ -500,7 +500,7 @@ const error = (input, message) => {
   input.nextElementSibling.textContent = message;
   setTimeout(() => {
     isSendEmail = false;
-  }, 500);
+  }, 300);
 };
 
 const success = (input) => {
@@ -569,7 +569,6 @@ const emailSend = (username, email, subject, message) => {
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-
   checkLength(username, 2);
   checkLength(subject, 2);
   checkLength(message, 10);

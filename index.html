@@ -291,7 +291,13 @@
    <!-- End of Section 5 -->
 
 
-   <script src='script.js'></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+   <script src='script.js' type="text/javascript">
+      (function () {
+         emailjs.init('6KKCgI7PUt4VgBw8A');
+      })();
+   </script>
+
 </body>
 
 </html>

@@ -1,6 +1,3 @@
-import emailjs from 'emailjs-com';
-import $ from 'jquery';
-
 // 마우스 포인터
 const mouseCircle = document.querySelector('.mouse-circle');
 const mouseDot = document.querySelector('.mouse-dot');
@@ -496,14 +493,19 @@ const email = document.getElementById('email');
 const subject = document.getElementById('subject');
 const message = document.getElementById('message');
 const messages = document.querySelectorAll('.message');
+let isSendEmail = false;
 
 const error = (input, message) => {
   input.nextElementSibling.classList.add('error');
   input.nextElementSibling.textContent = message;
+  setTimeout(() => {
+    isSendEmail = false;
+  }, 500);
 };
 
 const success = (input) => {
   input.nextElementSibling.classList.remove('error');
+  isSendEmail = true;
 };
 
 const checkRequiredFields = (inputArr) => {
@@ -511,7 +513,7 @@ const checkRequiredFields = (inputArr) => {
     if (input.value.trim() === '') {
       error(input, `${input.id}를 입력해주세요.`);
     }
-    //  이걸 넣으니 최종 성공으로 되어 checkLength 함수가 작동하지 않는다.
+    //  아래 코드를 넣으니 최종 성공으로 되어 checkLength 함수가 작동하지 않는다.
     //  else {
     //    success(input);
     //  }
@@ -537,6 +539,34 @@ const checkEmail = (input) => {
   }
 };
 
+// Email JS
+const emailSend = (username, email, subject, message) => {
+  console.log('gg');
+  emailjs.init('6KKCgI7PUt4VgBw8A');
+
+  let templateParams = {
+    name: username.value,
+    email: email.value,
+    subject: subject.value,
+    message: message.value,
+  };
+
+  emailjs.send('service_jj92e66', 'template_du1uk47', templateParams).then(
+    function (response) {
+      console.log('SUCCESS!', response.status, response.text);
+      alert('이메일 전송이 완료되었습니다. 곧 회신 드리겠습니다. 감사합니다!');
+    },
+    function (error) {
+      console.log('FAILED...', error);
+      alert(
+        '전송에 실패하였습니다. "hillskuti@naver.com"로 직접 메일을 발송해주세요!'
+      );
+    }
+  );
+};
+
+// End of Email JS
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -545,28 +575,10 @@ form.addEventListener('submit', (e) => {
   checkLength(message, 10);
   checkEmail(email);
   checkRequiredFields([username, email, subject, message]);
+  setTimeout(() => {
+    isSendEmail && emailSend(username, email, subject, message);
+  }, 700);
 });
 // End of Form Validation
 
 // End of Section 5
-
-// Email JS
-(function () {
-  emailjs.init('6KKCgI7PUt4VgBw8A');
-
-  var templateParams = {
-    name: 'James',
-    notes: 'Check this out!',
-  };
-
-  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams).then(
-    function (response) {
-      console.log('SUCCESS!', response.status, response.text);
-    },
-    function (error) {
-      console.log('FAILED...', error);
-    }
-  );
-})();
-
-// End of Email JS

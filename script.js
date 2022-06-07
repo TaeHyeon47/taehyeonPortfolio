@@ -511,7 +511,7 @@ const success = (input) => {
 const checkRequiredFields = (inputArr) => {
   inputArr.forEach((input) => {
     if (input.value.trim() === '') {
-      error(input, `${input.id}를 입력해주세요.`);
+      error(input, `${input.placeholder}를 입력해주세요.`);
     }
     //  아래 코드를 넣으니 최종 성공으로 되어 checkLength 함수가 작동하지 않는다.
     //  else {
@@ -522,7 +522,10 @@ const checkRequiredFields = (inputArr) => {
 
 const checkLength = (input, min) => {
   if (input.value.trim().length < min) {
-    error(input, `${input.id}의 값은 ${min}자 이상 작성되어야 합니다.`);
+    error(
+      input,
+      `${input.placeholder}의 값은 ${min}자 이상 작성되어야 합니다.`
+    );
   } else {
     success(input);
   }

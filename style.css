@@ -43,7 +43,7 @@ body {
 /* 메인 버튼 */
 .main-btn {
    position: absolute;
-   bottom: 3rem;
+   bottom: 2rem;
    width: 13rem;
    height: 13rem;
    background-color: rgba(77, 181, 255, 0.4);
@@ -603,8 +603,9 @@ body {
    padding: 2rem 1.7rem 2rem 1.7rem;
    background-color: #2c2c6c;
    border-radius: 5rem;
-   height: 52rem;
-   margin: 3rem;
+   height: 53rem;
+   margin: 3rem 5rem 7rem 5rem;
+
 }
 
 .project-wrapper h2 {
@@ -628,7 +629,7 @@ body {
    background-color: #2c2c6c;
    border: 0.1rem solid #4db5ff;
    color: #4db5ff;
-   margin: 3rem 1rem 0 2rem;
+   margin: 3rem 0 0 2rem;
    transition: background-color 0.5s;
    cursor: pointer;
 }
@@ -649,7 +650,7 @@ body {
    transition: background-color 0.5s;
    cursor: pointer;
    color: rgb(47, 47, 47);
-
+   margin-left: 1rem;
 }
 
 .btn-livedemo:hover {
@@ -660,7 +661,7 @@ body {
 
 .project {
    width: 40rem;
-   height: 27rem;
+   height: 25rem;
    overflow: hidden;
    /* margin: 5rem; */
    background-color: #000;
@@ -810,8 +811,6 @@ body {
    visibility: visible;
    transition: transform 0.5s;
 }
-
-
 
 /* End of Project Hide Button */
 /* End of Projects */
@@ -1259,6 +1258,6 @@ body {
 
 
 /* 섹션 3의 버튼 안보이게하는 기능. 버그 때문에 만듬. 프로젝트 7개 이상이되면 삭제예정 */
-.temp {
+/* .temp {
    visibility: hidden;
-}
+} */

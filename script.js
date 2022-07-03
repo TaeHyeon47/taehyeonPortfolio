@@ -278,7 +278,7 @@ menuIcon.addEventListener('click', () => {
 // About Me Text
 const aboutMeText = document.querySelector('.about-me-text');
 const aboutMeTextContent =
-  '사용자 관점에서 최적의 UI/UX를 만드는 프론트엔드 개발자입니다. 개발의 핵심인 Flow-Chart를 그릴 수 있으며, 명확한 커뮤니케이션 능력으로 협업이 뛰어납니다. 제안은 아래의 메일로 요청 부탁드립니다.';
+  '사용자 관점에서 최적의 UI/UX를 만드는 프론트엔드 개발자입니다. 명확한 커뮤니케이션 능력으로 협업이 뛰어납니다. 제안은 아래의 메일로 요청 부탁드립니다.';
 
 // Array.from은 String을 배열로 만들어준다. console.log로 확인 가능.
 Array.from(aboutMeTextContent).forEach((char) => {

@@ -5,149 +5,164 @@
 
 /*? 공통 스타일 */
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   text-decoration: none;
-   list-style-type: none;
-   outline: none;
-   font-family: 'Nanum Gothic', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  outline: none;
+  font-family: 'Nanum Gothic', sans-serif;
 }
 
 html {
-   /* 1rem = 10px */
-   font-size: 62.5%;
-   /* settion3에서 project 클릭 시, 나오는 화면을 scrollIntoView으로 스크롤을 스무스하게 만들어줌. */
-   scroll-behavior: smooth;
+  /* 1rem = 10px */
+  font-size: 62.5%;
+  /* settion3에서 project 클릭 시, 나오는 화면을 scrollIntoView으로 스크롤을 스무스하게 만들어줌. */
+  scroll-behavior: smooth;
 }
 
 .center {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* 파란 배경 */
 :root {
-   --color-bg: #1f1f38;
-   --color-bg-variant: #2c2c6c;
+  --color-bg: #1f1f38;
+  --color-bg-variant: #2c2c6c;
 }
 
 body {
-   background: var(--color-bg);
-   background-image: url(images/bg-texture.png);
+  background: var(--color-bg);
+  background-image: url(images/bg-texture.png);
 }
 
 /* 파란 배경 종료
 
 /* 메인 버튼 */
 .main-btn {
-   position: absolute;
-   bottom: 2rem;
-   width: 13rem;
-   height: 13rem;
-   background-color: rgba(77, 181, 255, 0.4);
-   border-radius: 50%;
-   border: 0.1rem solid #fff;
-   padding: 0.1rem;
-   overflow: hidden;
+  position: absolute;
+  bottom: 2rem;
+  width: 13rem;
+  height: 13rem;
+  background-color: rgba(77, 181, 255, 0.4);
+  border-radius: 50%;
+  border: 0.1rem solid #fff;
+  padding: 0.1rem;
+  overflow: hidden;
 }
 
 .main-btn-content {
-   width: 100%;
-   height: 100%;
-   border: 0.2rem dotted #2c2c6c;
-   border-radius: 50%;
-   /* 버튼을 회전 시킨다. */
-   transform: rotate(40deg);
-   transition: transform 0.2s, border 0.2s;
+  width: 100%;
+  height: 100%;
+  border: 0.2rem dotted #2c2c6c;
+  border-radius: 50%;
+  /* 버튼을 회전 시킨다. */
+  transform: rotate(40deg);
+  transition: transform 0.2s, border 0.2s;
 }
 
 .main-btn:hover .main-btn-content {
-   transform: rotate(180deg);
-   border: 0.2rem dotted #2c2c6c;
-   ;
-   transition: transform 0.7s 0.3s, border 0.2s;
-
+  transform: rotate(180deg);
+  border: 0.2rem dotted #2c2c6c;
+  transition: transform 0.7s 0.3s, border 0.2s;
 }
 
 .main-btn-line {
-   position: absolute;
-   top: 4rem;
-   width: 3rem;
-   height: 0.5rem;
-   border: 0.1rem solid #fff;
+  position: absolute;
+  top: 4rem;
+  width: 3rem;
+  height: 0.5rem;
+  border: 0.1rem solid #fff;
 }
 
 .main-btn-line:nth-child(1) {
-   /* rotateZ는 회전 시킨다. */
-   transform: rotateZ(-45deg) translateX(-0.65rem);
-   /* transform의 시작 위치를 변경 시킴 */
-   transform-origin: left center;
-   border-right: none;
+  /* rotateZ는 회전 시킨다. */
+  transform: rotateZ(-45deg) translateX(-0.65rem);
+  /* transform의 시작 위치를 변경 시킴 */
+  transform-origin: left center;
+  border-right: none;
 }
 
 .main-btn-line:nth-child(2) {
-   transform: rotateZ(45deg) translateX(0.65rem);
-   transform-origin: right center;
-   border-left: none;
+  transform: rotateZ(45deg) translateX(0.65rem);
+  transform-origin: right center;
+  border-left: none;
 }
 
 .main-btn-line:nth-child(3) {
-   transform: rotateZ(90deg) translateX(0.5rem);
-   border-left: none;
+  transform: rotateZ(90deg) translateX(0.5rem);
+  border-left: none;
 }
 
 .main-btn span {
-   position: absolute;
-   bottom: 3rem;
-   color: #fff;
-   font-size: 1.1rem;
-   font-weight: 600;
-   text-transform: uppercase;
+  position: absolute;
+  bottom: 3rem;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .ripple {
-   position: absolute;
-   width: 0;
-   height: 0;
-   background-color: #4db5ff;
-   border-radius: 50%;
-   transform: translate(-50%, -50%);
-   /* forwards를 넣으면 애니매이션이 사라지지 않는다. */
-   animation: rippleAnim 1s forwards;
+  position: absolute;
+  width: 0;
+  height: 0;
+  background-color: #4db5ff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  /* forwards를 넣으면 애니매이션이 사라지지 않는다. */
+  animation: rippleAnim 1s forwards;
 }
 
 @keyframes rippleAnim {
-   0% {
-      width: 0;
-      height: 0;
-   }
+  0% {
+    width: 0;
+    height: 0;
+  }
 
-   100% {
-      width: 550%;
-      height: 550%;
-   }
+  100% {
+    width: 550%;
+    height: 550%;
+  }
 }
 
 /* 메인 버튼 종료 */
 
 /* 섹션 헤딩 */
 .section-heading {
-   font-size: 2rem;
-   font-weight: 300;
-   color: #fff;
-   text-transform: uppercase;
-   position: absolute;
-   /* top, left, tranform으로 센터로 보냄*/
-   top: 50%;
-   left: 10rem;
-   transform: translateY(-50%);
+  font-size: 2rem;
+  font-weight: 300;
+  color: #fff;
+  text-transform: uppercase;
+  position: absolute;
+  /* top, left, tranform으로 센터로 보냄*/
+  top: 50%;
+  left: 10rem;
+  transform: translateY(-50%);
 
-   /* width와 wrod-break로 세로 글로 변하게됨 */
-   width: 0;
-   word-break: break-all;
-   line-height: 4;
+  /* width와 wrod-break로 세로 글로 변하게됨 */
+  width: 0;
+  word-break: break-all;
+  line-height: 4;
+}
+
+.section-heading-project {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #fff;
+  text-transform: uppercase;
+  position: absolute;
+  /* top, left, tranform으로 센터로 보냄*/
+  top: 50%;
+  left: 10rem;
+  transform: translateY(-50%);
+
+  /* width와 wrod-break로 세로 글로 변하게됨 */
+  width: 0;
+  word-break: break-all;
+  line-height: 10;
 }
 
 /* 섹션 헤딩 종료 */
@@ -157,73 +172,73 @@ body {
 /*? 마우스 포인터  */
 .mouse-circle,
 .mouse-dot {
-   border-radius: 50%;
-   position: fixed;
-   z-index: 300;
-   transform: translate(-50%, -50%);
-   opacity: 0;
-   /* div로 오버라이팅이 되어 있어 pointer-events:none을 하여 hover 효과를 사용할 수 있게 함 */
-   pointer-events: none;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 300;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  /* div로 오버라이팅이 되어 있어 pointer-events:none을 하여 hover 효과를 사용할 수 있게 함 */
+  pointer-events: none;
 }
 
 .mouse-circle {
-   width: 6rem;
-   height: 6rem;
-   border: 0.1rem solid rgba(77, 181, 255, 0.4);
+  width: 6rem;
+  height: 6rem;
+  border: 0.1rem solid rgba(77, 181, 255, 0.4);
 
-   animation: mouseCircleAnim 10s infinite linear;
+  animation: mouseCircleAnim 10s infinite linear;
 }
 
 @keyframes mouseCircleAnim {
-   0% {
-      width: 6rem;
-      height: 6rem;
-   }
+  0% {
+    width: 6rem;
+    height: 6rem;
+  }
 
-   25% {
-      width: 8rem;
-      height: 8rem;
-   }
+  25% {
+    width: 8rem;
+    height: 8rem;
+  }
 
-   35% {
-      width: 4rem;
-      height: 4rem;
-   }
+  35% {
+    width: 4rem;
+    height: 4rem;
+  }
 
-   70% {
-      width: 8rem;
-      height: 8rem;
-   }
+  70% {
+    width: 8rem;
+    height: 8rem;
+  }
 
-   100% {
-      width: 6rem;
-      height: 6rem;
-   }
+  100% {
+    width: 6rem;
+    height: 6rem;
+  }
 }
 
 .mouse-dot {
-   width: 0.5rem;
-   height: 0.5rem;
-   background-color: #4db5ff;
-   position: fixed;
-   animation: mouseDotAnim 10s infinite linear
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #4db5ff;
+  position: fixed;
+  animation: mouseDotAnim 10s infinite linear;
 }
 
 @keyframes mouseDotAnim {
-   0% {
-      width: 0.5rem;
-      height: 0.5rem;
-   }
+  0% {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
 
-   55% {
-      width: 1.5rem;
-      height: 1.5rem;
-   }
+  55% {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 
-   100% {
-      width: 0.5rem;
-      height: 0.5rem;
-   }
+  100% {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
 }
 
 /* 마우스 포인터 종료  */
@@ -241,42 +256,42 @@ body {
 
 /* Progress Bar */
 .progress-bar {
-   position: fixed;
-   bottom: 4rem;
-   right: 4rem;
-   width: 8rem;
-   height: 8rem;
-   background-color: #fff;
-   border-radius: 50%;
-   z-index: 200;
-   /* 도형 2개를 돌아가게 만들고, overflow 히든으로 없애주면 원형이 돌아가면서 채워지는 그림이 만들어진다. */
-   overflow: hidden;
-   /* transform 속성으로 요소에 회전, 크기 조절, 기울이기, 이동 효과를 부여할 수 있습니다. */
-   transform: translate(-50%, -50%);
+  position: fixed;
+  bottom: 4rem;
+  right: 4rem;
+  width: 8rem;
+  height: 8rem;
+  background-color: #fff;
+  border-radius: 50%;
+  z-index: 200;
+  /* 도형 2개를 돌아가게 만들고, overflow 히든으로 없애주면 원형이 돌아가면서 채워지는 그림이 만들어진다. */
+  overflow: hidden;
+  /* transform 속성으로 요소에 회전, 크기 조절, 기울이기, 이동 효과를 부여할 수 있습니다. */
+  transform: translate(-50%, -50%);
 }
 
-.half-circle, .half-circle-top {
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 50%;
-   height: 100%;
-   /* transform-origin은 공부가 필요해보임. */
-   transform-origin: right center;
-   pointer-events: none;
-
+.half-circle,
+.half-circle-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  /* transform-origin은 공부가 필요해보임. */
+  transform-origin: right center;
+  pointer-events: none;
 }
 
 .half-circle:nth-child(1) {
-   background-color: #4db5ff;
+  background-color: #4db5ff;
 }
 
 .half-circle:nth-child(2) {
-   background-color: #4db5ff;
+  background-color: #4db5ff;
 }
 
 .half-circle-top {
-   background-color: #fff;
+  background-color: #fff;
 }
 
 /* .progress-bar:hover .half-circle-top {
@@ -295,20 +310,20 @@ body {
 } */
 
 .progress-bar-circle {
-   width: 7.8rem;
-   height: 7.8rem;
-   background-color: #000;
-   border-radius: 50%;
-   color: #fff;
-   font-size: 4rem;
-   z-index: 200;
-   transition: transform 0.5s;
+  width: 7.8rem;
+  height: 7.8rem;
+  background-color: #000;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 4rem;
+  z-index: 200;
+  transition: transform 0.5s;
 
-   /* visibility: hidden; */
-   /*? Sticky 기능 구현시 document.elementFromPoint으로 현재 DOM요소를 가져오는 부분이 있음  */
-   /*? 하지만 해당 요소가 상위 class='progress-bar' 영역을 가리고 있어 동작되지 않는다. */
-   /*? 따라서 pointer-events: none;를 추가하여 동작되도록 만든다. */
-   pointer-events: none;
+  /* visibility: hidden; */
+  /*? Sticky 기능 구현시 document.elementFromPoint으로 현재 DOM요소를 가져오는 부분이 있음  */
+  /*? 하지만 해당 요소가 상위 class='progress-bar' 영역을 가리고 있어 동작되지 않는다. */
+  /*? 따라서 pointer-events: none;를 추가하여 동작되도록 만든다. */
+  pointer-events: none;
 }
 
 /* End of Progress Bar */
@@ -316,500 +331,523 @@ body {
 /* Navigation */
 /* Menu Icon */
 .menu-icon {
-   position: fixed;
-   top: 3.5rem;
-   right: 0;
-   width: 12rem;
-   height: 7rem;
-   /* background-color: red; */
-   flex-direction: column;
-   opacity: 0;
-   visibility: hidden;
-   transition: opacity 0.2s;
-   cursor: pointer;
+  position: fixed;
+  top: 3.5rem;
+  right: 0;
+  width: 12rem;
+  height: 7rem;
+  /* background-color: red; */
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s;
+  cursor: pointer;
 
-   /* 마우스 포인터에 가려서 클릭이 안되기 때문에 z-index를 넣음 */
-   z-index: 100;
+  /* 마우스 포인터에 가려서 클릭이 안되기 때문에 z-index를 넣음 */
+  z-index: 100;
 
-   /*? Sticky Element 구현 시, hoveredEl.style.cssText = `top: ${y}px; left: ${x}px`; 코드가 있다. */
-   /*? 해당 코드로 메뉴아이콘이 마우스를 따라다니는데 위치가 이상하다. */
-   /*? transform: translate(-50%, -50%);을 넣으면 정상적인 위치가 된다. */
-   /* 참고 : transform: translate(-50%, -50%);으로 인해 top과 right 값을 변경해야한다. */
-   transform: translate(-50%, -50%);
+  /*? Sticky Element 구현 시, hoveredEl.style.cssText = `top: ${y}px; left: ${x}px`; 코드가 있다. */
+  /*? 해당 코드로 메뉴아이콘이 마우스를 따라다니는데 위치가 이상하다. */
+  /*? transform: translate(-50%, -50%);을 넣으면 정상적인 위치가 된다. */
+  /* 참고 : transform: translate(-50%, -50%);으로 인해 top과 right 값을 변경해야한다. */
+  transform: translate(-50%, -50%);
 }
 
 .menu-icon-line {
-   width: 4rem;
-   height: 0.1rem;
-   background-color: #fff;
-   margin: 0.5rem 0;
-   box-shadow: 0 0.3rem 0.5rem #000;
+  width: 4rem;
+  height: 0.1rem;
+  background-color: #fff;
+  margin: 0.5rem 0;
+  box-shadow: 0 0.3rem 0.5rem #000;
 }
 
 .show-menu-icon {
-   opacity: 1;
-   visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 /* End of Menu Icon */
 
 /* Navbar */
 .navbar {
-   position: fixed;
-   top: 2.5rem;
-   width: 100%;
-   display: flex;
-   justify-content: flex-end;
-   padding-right: 3rem;
-   transition: opacity 0.5s, visibility 0.5s, transform 0.5s;
-   text-decoration: none;
+  position: fixed;
+  top: 2.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 3rem;
+  transition: opacity 0.5s, visibility 0.5s, transform 0.5s;
+  text-decoration: none;
 
-
-   /* 마우스 포인터에 가려서 클릭이 안되기 때문에 z-index를 넣음 */
-   z-index: 100;
+  /* 마우스 포인터에 가려서 클릭이 안되기 때문에 z-index를 넣음 */
+  z-index: 100;
 }
 
 .navbar-link {
-   font-size: 1.5rem;
-   font-weight: 700;
-   text-transform: uppercase;
-   color: #fff;
-   margin: 0 2.5rem;
-   z-index: 100;
-   text-shadow: 0 0.3rem 0.5rem #000;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 2.5rem;
+  z-index: 100;
+  text-shadow: 0 0.3rem 0.5rem #000;
 }
 
 .hide-navbar {
-   opacity: 0;
-   visibility: hidden;
-   /* 오른쪽으로 사라지게 만듬 */
-   transform: translateX(10rem);
+  opacity: 0;
+  visibility: hidden;
+  /* 오른쪽으로 사라지게 만듬 */
+  transform: translateX(10rem);
 }
 
 /* End of Navbar */
 /* End of Navigation */
 
-
 /*? 섹션 1 */
 .section-1 {
-   position: relative;
-   width: 100%;
-   height: 100vh;
+  position: relative;
+  width: 100%;
+  height: 100vh;
 }
 
 /* 로고 */
 .logo {
-   position: absolute;
-   top: 2rem;
-   left: 5rem;
-   font-size: 2rem;
-   /* text-transform: uppercase; */
-   color: #fff;
+  position: absolute;
+  top: 2rem;
+  left: 5rem;
+  font-size: 2rem;
+  /* text-transform: uppercase; */
+  color: #fff;
 }
 
 /* 로고 종료 */
 
 /* 서클 애니매이션 */
 .circles {
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   display: grid;
-   grid-template-columns: repeat(2, 1fr);
-   grid-template-rows: repeat(2, 1fr);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
 }
 
 .circle {
-   width: 22rem;
-   height: 22rem;
-   border-radius: 50%;
-   background-color: red;
-   align-self: center;
-   justify-self: center;
-   position: relative;
-   top: 0;
-   left: 0;
-   transition: left 2s, top 2s;
+  width: 22rem;
+  height: 22rem;
+  border-radius: 50%;
+  background-color: red;
+  align-self: center;
+  justify-self: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: left 2s, top 2s;
 }
 
 .circle-1 {
-   background: url(images/landing/circle-1.jpeg) center no-repeat;
-   background-size: cover;
-   background-clip: content-box;
-   border: .3rem solid #4db5ff;
-   mix-blend-mode: lighten;
-   margin-left: -7rem;
+  background: url(images/landing/circle-1.jpeg) center no-repeat;
+  background-size: cover;
+  background-clip: content-box;
+  border: 0.3rem solid #4db5ff;
+  mix-blend-mode: lighten;
+  margin-left: -7rem;
 }
 
 .circle-2 {
-   background: url(images/landing/circle-3.jpeg) center no-repeat;
-   background-size: cover;
-   background-clip: content-box;
-   border: .3rem solid #4db5ff;
-   mix-blend-mode: lighten;
-   margin-right: -7rem;
+  background: url(images/landing/circle-3.jpeg) center no-repeat;
+  background-size: cover;
+  background-clip: content-box;
+  border: 0.3rem solid #4db5ff;
+  mix-blend-mode: lighten;
+  margin-right: -7rem;
 }
 
 .circle-3 {
-   background: url(images/landing/developer-1.jpeg) center no-repeat;
-   background-size: cover;
-   background-clip: content-box;
-   border: .3rem solid #4db5ff;
-   mix-blend-mode: lighten;
-   margin-left: -7rem;
+  background: url(images/landing/developer-1.jpeg) center no-repeat;
+  background-size: cover;
+  background-clip: content-box;
+  border: 0.3rem solid #4db5ff;
+  mix-blend-mode: lighten;
+  margin-left: -7rem;
 }
 
 .circle-4 {
-   background: url(images/landing/circle-4.jpeg) center no-repeat;
-   background-size: cover;
-   background-clip: content-box;
-   border: .3rem solid #4db5ff;
-   mix-blend-mode: lighten;
-   margin-right: -7rem;
+  background: url(images/landing/circle-4.jpeg) center no-repeat;
+  background-size: cover;
+  background-clip: content-box;
+  border: 0.3rem solid #4db5ff;
+  mix-blend-mode: lighten;
+  margin-right: -7rem;
 }
 
 .main-circle {
-   width: 55rem;
-   height: 55rem;
-   position: absolute;
-   overflow: hidden;
-   border-radius: 50%;
-   transition: width 0.2s, height 0.2s;
+  width: 55rem;
+  height: 55rem;
+  position: absolute;
+  overflow: hidden;
+  border-radius: 50%;
+  transition: width 0.2s, height 0.2s;
 }
 
 .main-circle:hover {
-   width: 65rem;
-   height: 65rem;
+  width: 65rem;
+  height: 65rem;
 }
 
 .main-circle img {
-   /* it will allow us to blend the image with this dark background. */
-   mix-blend-mode: lighten;
-   /* mix-blend-mode: color-dodge; */
-   position: relative;
-   transition: left 2s, top 2s;
-   transform: translateX(15%);
-   width: 180%;
+  /* it will allow us to blend the image with this dark background. */
+  mix-blend-mode: lighten;
+  /* mix-blend-mode: color-dodge; */
+  position: relative;
+  transition: left 2s, top 2s;
+  transform: translateX(15%);
+  width: 180%;
 }
 
 /* 서클 애니매이션 종료 */
 
 /* 카피 문구 */
 .featured-text {
-   font-size: 2rem;
-   color: #fff;
-   text-transform: uppercase;
-   /* 글자 세로 정렬 */
-   width: 0;
-   word-wrap: break-word;
-   /* 글자 간격 설정 */
-   line-height: 3.5;
+  font-size: 2rem;
+  color: #fff;
+  text-transform: uppercase;
+  /* 글자 세로 정렬 */
+  width: 0;
+  word-wrap: break-word;
+  /* 글자 간격 설정 */
+  line-height: 3.5;
 }
 
 .featured-text-1 {
-   /* 왼쪽 정렬 */
-   margin: 0 auto 0 10rem;
+  /* 왼쪽 정렬 */
+  margin: 0 auto 0 10rem;
 }
 
 .featured-text-2 {
-   /* 오른쪽 정렬 */
-   margin: 0 10rem 0 auto;
+  /* 오른쪽 정렬 */
+  margin: 0 10rem 0 auto;
 }
 
 /* 카피 문구 종료 */
 
-
 /* 섹션 1 종료 */
-
 
 /*? 섹션 2 */
 .section-2 {
-   position: relative;
-   padding: 10rem 10rem 15rem 10rem;
-   margin-top: 10rem;
+  position: relative;
+  padding: 10rem 10rem 15rem 10rem;
+  margin-top: 10rem;
 }
 
 /* About Me Text */
 .about-me-text {
-   width: 80%;
-   margin: auto;
+  width: 80%;
+  margin: auto;
 }
 
 .about-me-text span {
-   /* font-family: 'Hi Melody', cursive; */
-   font-size: 10rem;
-   font-weight: bold;
-   color: #aaa;
-   letter-spacing: 0.5rem;
-   line-height: 1.1;
-   text-shadow: 0 0 1rem #4db5ff;
-   position: relative;
-   mix-blend-mode: hard-light;
+  /* font-family: 'Hi Melody', cursive; */
+  font-size: 10rem;
+  font-weight: bold;
+  color: #aaa;
+  letter-spacing: 0.5rem;
+  line-height: 1.1;
+  text-shadow: 0 0 1rem #4db5ff;
+  position: relative;
+  mix-blend-mode: hard-light;
 }
 
 @keyframes aboutMeTextAnim {
-   0% {
-      color: #aaa;
-      top: 0;
-   }
+  0% {
+    color: #aaa;
+    top: 0;
+  }
 
-   10%,
-   90% {
-      color: #fff;
-      top: 2rem;
-   }
+  10%,
+  90% {
+    color: #fff;
+    top: 2rem;
+  }
 
-   100% {
-      color: white;
-      top: 0;
-   }
+  100% {
+    color: white;
+    top: 0;
+  }
 }
 
 /* End of About Me text */
 
 /* Section 2 Main Button */
 .section-2 .main-btn {
-   /* left, bottom, transform 왼쪽에 있던 버튼이 가운데로 이동 */
-   left: 50%;
-   bottom: -5rem;
-   transform: translateX(-50%);
+  /* left, bottom, transform 왼쪽에 있던 버튼이 가운데로 이동 */
+  left: 50%;
+  bottom: -5rem;
+  transform: translateX(-50%);
 }
 
 /* End of Section 2 Main Button */
 
 /* 섹션 2 종료 */
 
-
 /*? Section 3 */
 .section-3 {
-   width: 100%;
-   height: 100%;
-   padding: 10rem 0;
-   margin-top: 10rem;
-   /* 백그라운드 이미지가 relative로 앞으로 나옴 */
-   position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 10rem 0;
+  margin-top: 10rem;
+  /* 백그라운드 이미지가 relative로 앞으로 나옴 */
+  position: relative;
 }
 
 /* Projects */
 .projects {
-   flex-wrap: wrap;
-   /*? 프로젝트 4개 이상시 padding-bottom 삭제 예정  */
-   /* padding-bottom: 15rem; */
+  flex-wrap: wrap;
+  /*? 프로젝트 4개 이상시 padding-bottom 삭제 예정  */
+  /* padding-bottom: 15rem; */
 }
 
 .project-wrapper {
-   padding: 2rem 1.7rem 2rem 1.7rem;
-   background-color: #2c2c6c;
-   border-radius: 5rem;
-   height: 53rem;
-   margin: 3rem 5rem 7rem 5rem;
+  padding: 2rem 1.7rem 2rem 1.7rem;
+  background-color: #2c2c6c;
+  border-radius: 5rem;
+  height: 100%;
+  margin: 3rem 5rem 7rem 5rem;
+}
 
+.project-wrapper2 {
+  padding: 2rem 1.7rem 2rem 1.7rem;
+  background-color: #2c2c6c;
+  border-radius: 5rem;
+  height: 100%;
+  margin: 3rem 5rem 7rem 5rem;
 }
 
 .project-wrapper h2 {
-   margin: 3rem 0 0 2rem;
-   color: white;
-   font-size: 2rem;
+  margin: 3rem 0 0 2rem;
+  color: white;
+  font-size: 2rem;
 }
 
 .project-wrapper p {
-   margin: 2rem 0 0 2rem;
-   max-width: 37rem;
-   color: white;
-   font-size: 1.3rem;
+  margin: 2rem 0 0 2rem;
+  max-width: 37rem;
+  color: white;
+  font-size: 1.3rem;
+}
+
+.project-wrapper2 h2 {
+  margin: 3rem 0 0 2rem;
+  color: white;
+  font-size: 2rem;
+}
+
+.project-wrapper2 p {
+  margin: 2rem 0 0 2rem;
+  max-width: 37rem;
+  color: white;
+  font-size: 1.3rem;
+}
+
+h1 {
+  margin: 3rem 0 0 2rem;
+  color: white;
+  font-size: 2.7rem;
+  font-weight: 500;
+  word-break: break-all;
 }
 
 .btn-github {
-   height: 4.2rem;
-   width: 9rem;
-   font-size: 1.8rem;
-   border-radius: 0.7rem;
-   background-color: #2c2c6c;
-   border: 0.1rem solid #4db5ff;
-   color: #4db5ff;
-   margin: 3rem 0 0 2rem;
-   transition: background-color 0.5s;
-   cursor: pointer;
+  height: 4.2rem;
+  width: 9rem;
+  font-size: 1.8rem;
+  border-radius: 0.7rem;
+  background-color: #2c2c6c;
+  border: 0.1rem solid #4db5ff;
+  color: #4db5ff;
+  margin: 3rem 0 0 2rem;
+  transition: background-color 0.5s;
+  cursor: pointer;
 }
 
 .btn-github:hover {
-   background-color: #fff;
-   border: 0.1rem solid #fff;
-   color: #000;
+  background-color: #fff;
+  border: 0.1rem solid #fff;
+  color: #000;
 }
 
 .btn-livedemo {
-   height: 4.2rem;
-   width: 11rem;
-   font-size: 1.8rem;
-   border-radius: 0.7rem;
-   background-color: #4db5ff;
-   border: 0.1rem;
-   transition: background-color 0.5s;
-   cursor: pointer;
-   color: rgb(47, 47, 47);
-   margin-left: 1rem;
+  height: 4.2rem;
+  width: 11rem;
+  font-size: 1.8rem;
+  border-radius: 0.7rem;
+  background-color: #4db5ff;
+  border: 0.1rem;
+  transition: background-color 0.5s;
+  cursor: pointer;
+  color: rgb(47, 47, 47);
+  margin-left: 1rem;
 }
 
 .btn-livedemo:hover {
-   background-color: #fff;
-   border: 0.1rem solid #fff;
-   color: #000;
+  background-color: #fff;
+  border: 0.1rem solid #fff;
+  color: #000;
 }
 
 .project {
-   width: 40rem;
-   height: 25rem;
-   overflow: hidden;
-   /* margin: 5rem; */
-   background-color: #000;
-   display: flex;
-   justify-content: center;
-   position: relative;
-   border: 0.1rem solid rgba(77, 181, 255, 0.4);
-   border-radius: 5rem;
-   cursor: pointer;
-   perspective: 20rem;
-   transition: opacity 0.5s;
+  width: 40rem;
+  height: 25rem;
+  overflow: hidden;
+  /* margin: 5rem; */
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border: 0.1rem solid rgba(77, 181, 255, 0.4);
+  border-radius: 5rem;
+  cursor: pointer;
+  perspective: 20rem;
+  transition: opacity 0.5s;
 }
 
 .project img {
-   width: 90%;
-   object-fit: cover;
-   position: absolute;
-   top: 2rem;
-   opacity: 0.5;
-   transition: top 4s 0.2s, opacity 0.5s;
-   /*? Mouse Circle Transform 기능에서 빠르게 프로젝트 이미지에 마우스를 가져다 대면 */
-   /*? mouseCircleTransform 이벤트가 일어나지 않는다.(마우스 서클이 해당 요소를 감싸지 않는다.) */
-   /*? 따라서 pointer-events: none추가하여, 어떠한 경우에도 서클이 요소를 감싸도록 한다. */
-   pointer-events: none;
+  width: 90%;
+  object-fit: cover;
+  position: absolute;
+  top: 2rem;
+  opacity: 0.5;
+  transition: top 4s 0.2s, opacity 0.5s;
+  /*? Mouse Circle Transform 기능에서 빠르게 프로젝트 이미지에 마우스를 가져다 대면 */
+  /*? mouseCircleTransform 이벤트가 일어나지 않는다.(마우스 서클이 해당 요소를 감싸지 않는다.) */
+  /*? 따라서 pointer-events: none추가하여, 어떠한 경우에도 서클이 요소를 감싸도록 한다. */
+  pointer-events: none;
 }
 
 .project:nth-child(odd):hover img {
-   animation: oddImgAnim 4s 0.2s;
-   opacity: 1;
+  animation: oddImgAnim 4s 0.2s;
+  opacity: 1;
 }
 
 @keyframes oddImgAnim {
-   0% {
-      transform: rotateY(0);
-   }
+  0% {
+    transform: rotateY(0);
+  }
 
-   25% {
-      transform: rotateY(-2deg) rotateX(2deg);
-   }
+  25% {
+    transform: rotateY(-2deg) rotateX(2deg);
+  }
 
-   50% {
-      transform: rotateY(2deg) rotateX(-2deg);
-   }
+  50% {
+    transform: rotateY(2deg) rotateX(-2deg);
+  }
 
-   100% {
-      transform: rotateY(0)
-   }
+  100% {
+    transform: rotateY(0);
+  }
 }
 
 .project:nth-child(even):hover img {
-   animation: evenImgAnim 4s 0.2s;
-   opacity: 1;
+  animation: evenImgAnim 4s 0.2s;
+  opacity: 1;
 }
 
 @keyframes evenImgAnim {
-   0% {
-      transform: rotateY(0);
-   }
+  0% {
+    transform: rotateY(0);
+  }
 
-   25% {
-      transform: rotateY(2deg) rotateX(-2deg);
-   }
+  25% {
+    transform: rotateY(2deg) rotateX(-2deg);
+  }
 
-   50% {
-      transform: rotateY(-2deg) rotateX(2deg);
-   }
+  50% {
+    transform: rotateY(-2deg) rotateX(2deg);
+  }
 
-   100% {
-      transform: rotateY(0)
-   }
+  100% {
+    transform: rotateY(0);
+  }
 }
 
 /* Big Project Image */
 .project-img-wrapper {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 0;
-   /* 버튼 클릭 시, 스무스하게 상단으로 올라가게 하기 위함 */
-   scroll-behavior: smooth;
-   background-color: rgba(0, 0, 0, 0.7);
-   animation: imgWrapperAnim 1s forwards;
-   /* wrapper에 올라간 이미지를 스크롤할 수 있게 해줌 */
-   overflow: hidden scroll;
-   z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  /* 버튼 클릭 시, 스무스하게 상단으로 올라가게 하기 위함 */
+  scroll-behavior: smooth;
+  background-color: rgba(0, 0, 0, 0.7);
+  animation: imgWrapperAnim 1s forwards;
+  /* wrapper에 올라간 이미지를 스크롤할 수 있게 해줌 */
+  overflow: hidden scroll;
+  z-index: 100;
 }
 
 @keyframes imgWrapperAnim {
-   0% {
-      height: 0;
-   }
+  0% {
+    height: 0;
+  }
 
-   100% {
-      height: 100%;
-   }
+  100% {
+    height: 100%;
+  }
 }
 
 .project-img {
-   width: 100%;
-   border-radius: 0.5rem;
-   padding: 7rem 20rem;
-   opacity: 0.9;
-   /* 애니매이션 시작점 변환 */
-   transform-origin: top center;
-   animation: imgAnim 1s 1s both;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 7rem 20rem;
+  opacity: 0.9;
+  /* 애니매이션 시작점 변환 */
+  transform-origin: top center;
+  animation: imgAnim 1s 1s both;
 
-   /*? 이미지가 inline 요소인 경우 아래의 코드 값이 맞지 않는다. 
+  /*? 이미지가 inline 요소인 경우 아래의 코드 값이 맞지 않는다. 
    "const scrollBool = scrolledPortion + pageViewportHeight === pageHeight;"
    Y스크롤 픽셀 + 화면 픽셀 === pageHeight이면 scrollBool은 true가 된다. */
-   /*? 따라서 display block로 설정하여 값이 맞도록하여, 버튼의 화살표가 위로 바뀌는 함수를 실행시킨다. */
-   display: block;
+  /*? 따라서 display block로 설정하여 값이 맞도록하여, 버튼의 화살표가 위로 바뀌는 함수를 실행시킨다. */
+  display: block;
 }
 
 @keyframes imgAnim {
-   0% {
-      transform: scale(0);
-   }
+  0% {
+    transform: scale(0);
+  }
 
-   100% {
-      transform: scale(1);
-   }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* End of Big Project Image */
 
 /* Project Hide Button */
 .project-hide-btn {
-   position: fixed;
-   top: 5rem;
-   right: 5rem;
-   background-color: transparent;
-   border: none;
-   color: #fff;
-   font-size: 2rem;
-   letter-spacing: 0.1rem;
-   cursor: pointer;
-   z-index: 200;
-   /* transform: scale(0) 적용시 화면에서 사라짐 */
-   transform: scale(0);
-   visibility: hidden;
+  position: fixed;
+  top: 5rem;
+  right: 5rem;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  z-index: 200;
+  /* transform: scale(0) 적용시 화면에서 사라짐 */
+  transform: scale(0);
+  visibility: hidden;
 }
 
 .change.project-hide-btn {
-   /* transform: scale(1)로 버튼이 나타남 */
-   transform: scale(1);
-   visibility: visible;
-   transition: transform 0.5s;
+  /* transform: scale(1)로 버튼이 나타남 */
+  transform: scale(1);
+  visibility: visible;
+  transition: transform 0.5s;
 }
 
 /* End of Project Hide Button */
@@ -818,88 +856,87 @@ body {
 /* Projects Button */
 /* 버튼을 가운데로 */
 .projects-btn {
-   left: 50%;
-   transform: translateX(-50%)
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .projects-btn .main-btn-line {
-   transition: all 0.5s;
+  transition: all 0.5s;
 }
 
-.change>.main-btn-line:nth-child(1) {
-   transform: rotateZ(45deg) translateX(-0.65rem)
+.change > .main-btn-line:nth-child(1) {
+  transform: rotateZ(45deg) translateX(-0.65rem);
 }
 
-.change>.main-btn-line:nth-child(2) {
-   transform: rotateZ(-45deg) translateX(0.65rem)
+.change > .main-btn-line:nth-child(2) {
+  transform: rotateZ(-45deg) translateX(0.65rem);
 }
 
-.change>.main-btn-line:nth-child(3) {
-   transform: rotateZ(90deg) translateX(-0.5rem);
-   border-left: 0.1rem solid #fff;
-   border-right: none;
+.change > .main-btn-line:nth-child(3) {
+  transform: rotateZ(90deg) translateX(-0.5rem);
+  border-left: 0.1rem solid #fff;
+  border-right: none;
 }
 
 /* End of Projects Button */
 
 /* End of Section 3 */
 
-
 /*? Section 4 */
 .section-4 {
-   /* position relative으로 백그라운드 뒤에 있던 Section 4의 컨텐츠가 앞으로 나옴 */
-   position: relative;
-   width: 100%;
-   margin-top: 10rem;
+  /* position relative으로 백그라운드 뒤에 있던 Section 4의 컨텐츠가 앞으로 나옴 */
+  position: relative;
+  width: 100%;
+  margin-top: 10rem;
 }
 
 /* Services */
 .services-wrapper {
-   width: 100%;
-   flex-direction: column;
+  width: 100%;
+  flex-direction: column;
 }
 
 .service {
-   width: 70%;
-   margin: 2rem 0;
-   border-bottom: 0.5rem solid #4db5ff;
+  width: 70%;
+  margin: 2rem 0;
+  border-bottom: 0.5rem solid #4db5ff;
 }
 
 .service-btn {
-   width: 100%;
-   position: relative;
-   /* link(a) 요소는 display가 기본 inline이다. */
-   display: block;
-   height: 15rem;
+  width: 100%;
+  position: relative;
+  /* link(a) 요소는 display가 기본 inline이다. */
+  display: block;
+  height: 15rem;
 }
 
 .service-btn span {
-   font-family: 'Times New Roman', Times, serif;
-   font-size: 10rem;
-   font-style: italic;
-   font-weight: bold;
-   color: #4db5ff;
-   position: absolute;
-   right: 0;
-   transition: right 0.5s;
-   pointer-events: none;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 10rem;
+  font-style: italic;
+  font-weight: bold;
+  color: #4db5ff;
+  position: absolute;
+  right: 0;
+  transition: right 0.5s;
+  pointer-events: none;
 }
 
 .service-text {
-   font-size: 5rem;
-   color: rgba(77, 181, 255, 0.6);
-   letter-spacing: 0.1rem;
-   height: 0;
-   visibility: hidden;
-   opacity: 0;
-   transition: all 0.2s;
+  font-size: 5rem;
+  color: rgba(77, 181, 255, 0.6);
+  letter-spacing: 0.1rem;
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s;
 }
 
 .change.service-text {
-   height: 15rem;
-   visibility: visible;
-   opacity: 1;
-   transition: height 0.5s, opacity 0.5s;
+  height: 15rem;
+  visibility: visible;
+  opacity: 1;
+  transition: height 0.5s, opacity 0.5s;
 }
 
 /* End of Services */
@@ -907,72 +944,72 @@ body {
 
 /*? Section 5 */
 .section-5 {
-   position: relative;
-   height: 100vh;
-   flex-direction: column;
-   margin-top: 10rem;
+  position: relative;
+  height: 100vh;
+  flex-direction: column;
+  margin-top: 10rem;
 }
 
 /* Form */
 .form-heading {
-   /* font-family: 'Courier New', Courier, monospace; */
-   font-size: 5rem;
-   font-weight: 400;
-   color: #4db5ff;
-   letter-spacing: 0.3rem;
-   margin-bottom: 3rem;
-   transition: opacity 0.3s;
+  /* font-family: 'Courier New', Courier, monospace; */
+  font-size: 5rem;
+  font-weight: 400;
+  color: #4db5ff;
+  letter-spacing: 0.3rem;
+  margin-bottom: 3rem;
+  transition: opacity 0.3s;
 }
 
 .contact-form {
-   flex-direction: column;
+  flex-direction: column;
 }
 
 .contact-form-input {
-   width: 60rem;
-   padding: 0.5rem;
-   margin: 1rem 0;
-   background-color: rgba(77, 181, 255, 0.1);
-   border: 0.1rem solid rgba(77, 181, 255, 0.5);
-   font-size: 1.7rem;
-   font-weight: bold;
-   color: #aaa;
-   letter-spacing: 0.1rem;
-   height: 5rem;
+  width: 60rem;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  background-color: rgba(77, 181, 255, 0.1);
+  border: 0.1rem solid rgba(77, 181, 255, 0.5);
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #aaa;
+  letter-spacing: 0.1rem;
+  height: 5rem;
 }
 
 .contact-form-textarea {
-   height: 20rem;
-   /* 텍스트 박스의 사이즈를 고정 */
-   resize: none;
+  height: 20rem;
+  /* 텍스트 박스의 사이즈를 고정 */
+  resize: none;
 }
 
 .form-submit-btn {
-   width: 20rem;
-   height: 5rem;
-   background-color: #4db5ff;
-   border: none;
-   /* align-self: flex-start; */
-   font-size: 1.8rem;
-   color: #fff;
+  width: 20rem;
+  height: 5rem;
+  background-color: #4db5ff;
+  border: none;
+  /* align-self: flex-start; */
+  font-size: 1.8rem;
+  color: #fff;
 }
 
 /* Form Validation */
 .message {
-   font-size: 1.2rem;
-   font-weight: 700;
-   color: #4db5ff;
-   text-transform: uppercase;
-   letter-spacing: 0.1rem;
-   margin: 0 auto 1rem 0;
-   visibility: hidden;
-   opacity: 0;
-   transition: opacity 0.3s;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #4db5ff;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin: 0 auto 1rem 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .error.message {
-   visibility: visible;
-   opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
 /* End of Form Validation */
@@ -982,20 +1019,21 @@ body {
 /* Slideshow */
 
 .slideshow {
-   display: flex;
-   width: 50rem;
-   margin-top: 10rem;
-   padding: 0 2rem;
+  display: flex;
+  width: 50rem;
+  margin-top: 10rem;
+  padding: 0 2rem;
 }
 
 .slideshow-link {
-   width: 20%;
-   filter: brightness(0.5);
-   transition: filter 1.5s;
+  width: 20%;
+  filter: brightness(0.5);
+  transition: filter 1.5s;
 }
 
-.slideshow-link:nth-child(1), .slideshow-link:nth-child(5) {
-   transition: width 0.5s, opacity 0.5s;
+.slideshow-link:nth-child(1),
+.slideshow-link:nth-child(5) {
+  transition: width 0.5s, opacity 0.5s;
 }
 
 /* .slideshow-link:nth-child(3) {
@@ -1003,259 +1041,254 @@ body {
 } */
 
 .slideshow-link img {
-   width: 100%;
-   padding: 0 1rem;
+  width: 100%;
+  padding: 0 1rem;
 }
 
 .faded-out {
-   opacity: 0;
-   width: 0;
+  opacity: 0;
+  width: 0;
 }
 
 .light {
-   filter: brightness(1.5)
+  filter: brightness(1.5);
 }
 
 /* End of Slideshow */
 
 /* End of Section 5 */
 
-
-
 /* Responsive */
 
 @media (max-width: 1500px) {
-   .circle {
-      width: 15rem;
-      height: 15rem;
-   }
+  .circle {
+    width: 15rem;
+    height: 15rem;
+  }
 
-   .main-circle {
+  .main-circle {
+    width: 45rem;
+    height: 45rem;
+  }
+
+  .main-circle:hover {
+    width: 55rem;
+    height: 55rem;
+  }
+
+  .main-circle img {
+    width: 160%;
+    height: 160%;
+  }
+
+  .about-me-text span {
+    font-size: 11rem;
+  }
+
+  .section-4 {
+    margin-bottom: 10rem;
+  }
+
+  .service-btn span {
+    font-size: 9rem;
+  }
+
+  .service-text {
+    font-size: 4rem;
+  }
+
+  @media (max-width: 1350px) {
+    .main-btn {
+      width: 12.5rem;
+      height: 12.5rem;
+    }
+
+    .circle {
+      display: none;
+    }
+
+    .progress-bar {
+      right: 1rem;
+      bottom: 0;
+    }
+
+    .about-me-text span {
+      font-size: 10rem;
+    }
+  }
+
+  @media (max-width: 1150px) {
+    html {
+      font-size: 55%;
+    }
+
+    .mouse-circle,
+    .mouse-dot {
+      display: none;
+    }
+
+    .navbar-link {
+      margin: 0 2rem;
+    }
+
+    .main-circle {
+      width: 40rem;
+      height: 40rem;
+    }
+
+    .main-circle:hover {
       width: 45rem;
       height: 45rem;
-   }
+    }
 
-   .main-circle:hover {
-      width: 55rem;
-      height: 55rem;
-   }
+    .about-me-text span {
+      font-size: 7.5rem;
+    }
 
-   .main-circle img {
-      width: 160%;
-      height: 160%;
-   }
+    .project-img {
+      padding: 7rem 11rem;
+    }
 
-   .about-me-text span {
-      font-size: 11rem;
-   }
+    .project-hide-btn {
+      right: 2rem;
+    }
 
-   .section-4 {
-      margin-bottom: 10rem;
-   }
+    .service-btn {
+      height: 12rem;
+    }
 
-   .service-btn span {
-      font-size: 9rem;
-   }
+    .service-btn span {
+      font-size: 8rem;
+    }
 
-   .service-text {
-      font-size: 4rem;
-   }
+    .service-text {
+      font-size: 3.5rem;
+    }
 
-   @media (max-width: 1350px) {
-      .main-btn {
-         width: 12.5rem;
-         height: 12.5rem;
-      }
-
-      .circle {
-         display: none;
-      }
-
-      .progress-bar {
-         right: 1rem;
-         bottom: 0;
-      }
-
-      .about-me-text span {
-         font-size: 10rem;
-      }
-   }
-
-   @media (max-width: 1150px) {
-      html {
-         font-size: 55%;
-      }
-
-      .mouse-circle,
-      .mouse-dot {
-         display: none;
-      }
-
-      .navbar-link {
-         margin: 0 2rem;
-      }
-
-      .main-circle {
-         width: 40rem;
-         height: 40rem;
-      }
-
-      .main-circle:hover {
-         width: 45rem;
-         height: 45rem;
-      }
-
-      .about-me-text span {
-         font-size: 7.5rem;
-      }
-
-      .project-img {
-         padding: 7rem 11rem;
-      }
-
-      .project-hide-btn {
-         right: 2rem;
-      }
-
-      .service-btn {
-         height: 12rem;
-      }
-
-      .service-btn span {
-         font-size: 8rem;
-      }
-
-      .service-text {
-         font-size: 3.5rem;
-      }
-
-      .slideshow {
-         margin: 5rem 0;
-      }
-   }
+    .slideshow {
+      margin: 5rem 0;
+    }
+  }
 }
 
 @media (max-width: 900px) {
-   .menu-icon {
-      right: -4rem;
-   }
+  .menu-icon {
+    right: -4rem;
+  }
 
-   .navbar-link {
-      font-size: 1.5rem;
-      margin: 0 1rem;
-   }
+  .navbar-link {
+    font-size: 1.5rem;
+    margin: 0 1rem;
+  }
 
-   .featured-text-1 {
-      margin: 0 auto 0 5rem;
-   }
+  .featured-text-1 {
+    margin: 0 auto 0 5rem;
+  }
 
-   .featured-text-2 {
-      margin: 0 5rem 0 auto;
-   }
+  .featured-text-2 {
+    margin: 0 5rem 0 auto;
+  }
 
-   .section-heading {
-      left: 5rem;
-   }
+  .section-heading {
+    left: 5rem;
+  }
 
-   .about-me-text span {
-      font-size: 5.5rem;
-      color: #ccc;
-   }
+  .about-me-text span {
+    font-size: 5.5rem;
+    color: #ccc;
+  }
 
-   .service-btn {
-      height: 9rem;
-   }
+  .service-btn {
+    height: 9rem;
+  }
 
-   .service-btn span {
-      font-size: 6rem;
-   }
+  .service-btn span {
+    font-size: 6rem;
+  }
 
-   .service-text {
-      font-size: 3.2rem;
-   }
+  .service-text {
+    font-size: 3.2rem;
+  }
 }
 
-
 @media (max-width: 700px) {
-   html {
-      font-size: 50%;
-   }
+  html {
+    font-size: 50%;
+  }
 
-   .contact-form-input {
-      width: 50rem;
-   }
+  .contact-form-input {
+    width: 50rem;
+  }
 }
 
 @media (max-width: 550px) {
-   html {
-      font-size: 40%;
-   }
+  html {
+    font-size: 40%;
+  }
 
-   .main-circle img {
-      width: 180%;
-      height: 180%;
-   }
+  .main-circle img {
+    width: 180%;
+    height: 180%;
+  }
 
-   .service-btn span {
-      font-size: 4.5rem;
-   }
+  .service-btn span {
+    font-size: 4.5rem;
+  }
 
-   .service-text {
-      font-size: 3rem;
-      color: #bbb;
-   }
+  .service-text {
+    font-size: 3rem;
+    color: #bbb;
+  }
 
-   .contact-form-input {
-      width: 40rem;
-   }
+  .contact-form-input {
+    width: 40rem;
+  }
 
-   .slideshow {
-      width: 45rem;
-   }
+  .slideshow {
+    width: 45rem;
+  }
 
-   .slideshow-link img {
-      padding: 0 1.1rem;
-   }
+  .slideshow-link img {
+    padding: 0 1.1rem;
+  }
 }
 
 @media (max-width: 400px) {
-   html {
-      font-size: 35%;
-   }
+  html {
+    font-size: 35%;
+  }
 
-   .logo {
-      font-size: 1.7rem;
-      top: 13rem;
-      left: 50%;
-      transform: translateX(-50%)
-   }
+  .logo {
+    font-size: 1.7rem;
+    top: 13rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-   .navbar {
-      justify-content: center;
-      padding: 0;
-   }
+  .navbar {
+    justify-content: center;
+    padding: 0;
+  }
 
-   .main-circle {
-      width: 38rem;
-   }
+  .main-circle {
+    width: 38rem;
+  }
 
-   .main-circle:hover {
-      width: 42rem;
-   }
+  .main-circle:hover {
+    width: 42rem;
+  }
 
-   .main-circle img {
-      width: 200%;
-      height: 200%;
-   }
+  .main-circle img {
+    width: 200%;
+    height: 200%;
+  }
 
-   .form-heading {
-      font-size: 5rem;
-   }
+  .form-heading {
+    font-size: 5rem;
+  }
 }
 
 /* End of Responsive */
-
-
 
 /* 섹션 3의 버튼 안보이게하는 기능. 버그 때문에 만듬. 프로젝트 7개 이상이되면 삭제예정 */
 /* .temp {

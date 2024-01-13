@@ -57,7 +57,7 @@
       <!--? 섹션 1 -->
       <section class='section-1 center' id='section-1'>
          <!-- 로고 -->
-         <a href="#" class='logo'>TYJ's Portfolio</a>
+         <a href="#" class='logo'>TaeHyeon's Portfolio</a>
          <!-- 로고 종료 -->
 
          <!-- 애니매이션 서클 -->
@@ -90,6 +90,7 @@
       </section>
       <!-- 섹션 1 종료 -->
 
+
       <!--? 섹션 2 -->
       <section class='section-2' id='section-2'>
          <!-- 섹션 2 Heading -->
@@ -115,11 +116,62 @@
       <!--? Section 3 -->
       <section class='section-3' id='section-3'>
          <!-- Section 3 Heading -->
-         <h1 class='section-heading'>Projects</h1>
+         <div class="projects center">
+            <h1>Front-End Projects</h1>
+         </div>
+         <br />
+         <br />
+         <h1 class='section-heading-project'>Projects</h1>
          <!-- End of Section 3 Heading -->
-
          <!-- Projects -->
          <div class="projects center">
+            <div class='project-wrapper'>
+               <div class='project pointer-enter'>
+                  <img src="images/projects/project-1.jpg">
+               </div>
+               <h2>서울아산병원 차세대 NGLIS FE 개발</h2>
+               <p style='line-height : 2rem;'>프로젝트 기간 : 2023-03 ~ 현재
+               </p>
+               <p style='line-height : 2rem;'>NGLIS(유전자 분석 소프트웨어) 프로젝트 Front-End 개발을 했습니다. React, NextJS, TypeScript,
+                  Material UI, MUI DataGrid, Redux, React Query, D3, Ajv, MSW 기술을 사용했습니다. D3 Chart를 사용하여 복잡하고 다양한 차트
+                  구현했습니다. Redux Toolkit으로 전역상태관리 Store, Action 등을 설계했습니다. Cypress를 사용한 e2e 테스트 작성했습니다. 유전체 Sequencing
+                  페이지 구현했습니다.
+               </p>
+            </div>
+            <div class='project-wrapper'>
+               <div class='project pointer-enter'>
+                  <img src="images/projects/project-2.gif">
+               </div>
+               <h2>HLA 변이검출 플랫폼 FE 개발 및 UI 기획</h2>
+               <p style='line-height : 2rem;'>프로젝트 기간 : 2022-08 ~ 2023-02
+               </p>
+               <p style='line-height : 2rem;'>회사 최초의 Front-End 개발자로 기술 조사 및 구성을 했습니다. React, NextJS, TypeScript, Redux,
+                  Material UI, Cypress, MSW 기술을 사용했습니다. 조직 패널 설정 페이지부터 분석 페이지까지 전체 Component 계층 구조를 디자인했습니다. Front-End
+                  UI를 전체
+                  기획했습니다. MSW를 사용한 Mock Service를 적용했습니다. ESLint를 적용했습니다. Material UI를 사용하여 퍼블리싱을 했습니다.</p>
+            </div>
+         </div>
+
+         <div class="projects center">
+            <h1>Personal Projects</h1>
+         </div>
+         <br />
+         <br />
+         <div class="projects center">
+            <div class='project-wrapper'>
+               <div class='project pointer-enter'>
+                  <img src="images/projects/project-1.jpg">
+               </div>
+               <h2>코드 번들링 사이트 muncCode</h2>
+               <p style='line-height : 2rem;'>MERN 스택으로 구현한 화장품 쇼핑몰입니다. 전역상태 관리로는 Redux-Toolkit을 사용했습니다. 타 사이트와 달리 색조
+                  화장품 중심의 쇼핑몰을 기획했습니다. 자세한 내용은 깃허브 또는 라이브 데모를 참고해주세요!</p>
+               <button class='btn-github pointer-enter'
+                  onclick="window.open('https://github.com/TaeHyeon47/muncShop');">Github</button>
+               <button class='btn-livedemo pointer-enter' onclick="window.open('https://muncshop.herokuapp.com/');">Live
+                  Demo</button>
+               <button class='btn-livedemo pointer-enter'
+                  onclick="window.open('https://www.youtube.com/watch?v=74VDU7rzv9Y');">Youtube</button>
+            </div>
             <div class='project-wrapper'>
                <div class='project pointer-enter'>
                   <img src="images/projects/project-1.jpg">
@@ -146,46 +198,54 @@
                <button class='btn-livedemo pointer-enter'
                   onclick="window.open('https://rad-snickerdoodle-8efa5c.netlify.app/');">Live Demo</button>
             </div>
-            <div class='project-wrapper'>
-               <div class='project pointer-enter'>
-                  <img src="images/projects/project-3.jpg">
-               </div>
-               <h2>포트폴리오 웹사이트</h2>
-               <p style='line-height : 2rem;'>포트폴리오 용도로 제작한 웹사이트입니다. 지금 보고 있는 바로 이 웹사이트에 해당합니다. 바닐라 자바스크립트로 제작되었습니다.
-                  개인 포트폴리오 저작권 보호를 위해 깃허브는 별도로 제공하지 않습니다.
-               </p>
+         </div>
 
-            </div>
-            <div class='project-wrapper'>
+         <div class="projects center">
+            <h1>서비스 기획 Projects</h1>
+         </div>
+         <br />
+         <br />
+         <div class="projects center">
+            <div class='project-wrapper2'>
                <div class='project pointer-enter'>
                   <img src="images/projects/project-4.jpg">
                </div>
                <h2>아모레퍼시픽몰</h2>
-               <p style='line-height : 2rem;'> 참여했던 아모레퍼시픽 운영 프로젝트의 사이트입니다.
+               <p> 2020-06-01 ~ 2020-12-01 </p>
+               <p style=' line-height : 2rem;'> 참여했던 아모레퍼시픽 운영 프로젝트의 사이트입니다. 이탈 고객을 대상으로 시행 이벤트 쿠폰 기획을 기획했습니다. 명절 전후 택배
+                  문의 감소를 위해 아모레몰, 에뛰드몰 플랫폼 공통 업체배송 공지 기능을 기획했습니다. Grip-mini 라이브커머스 연동을 위한 BO/API 개발 협의 및 배포했습니다. 외부 DB와
+                  리뷰DB 간의 피부속성값 연동 및 한달 리뷰 등 기획했습니다.
                </p>
                <button class='btn-github pointer-enter'
                   onclick="window.open('https://www.amoremall.com/kr/ko/main');">Web Site</button>
             </div>
-            <div class='project-wrapper'>
+            <div class='project-wrapper2'>
                <div class='project pointer-enter'>
                   <img src="images/projects/project-5.jpg">
                </div>
                <h2>에뛰드하우스몰</h2>
-               <p style='line-height : 2rem;'>참여했던 에뛰드하우스몰의 운영 프로젝트 사이트입니다. </p>
+               <p style='line-height : 2rem;'> 2020-06-01 ~ 2020-12-01
+               </p>
+               <p style='line-height : 2rem;'>참여했던 에뛰드하우스몰의 운영 프로젝트 사이트입니다. 상품상세 리뷰탭 개선 및 영상리뷰 등 기획, 리뷰 페이지 체류시간을 10% 이상
+                  증가시켰습니다. 이벤트 페이지인 핫딜 상품 코너 페이지를 기획했습니다. 30건 이상의 QA업무를 진행했습니다. </p>
                <button class='btn-github pointer-enter' onclick="window.open('https://www.etude.com/kr/ko/main');">Web
                   Site</button>
             </div>
-            <div class='project-wrapper'>
+            <div class='project-wrapper2'>
                <div class='project pointer-enter'>
                   <img src="images/projects/project-6.jpg">
                </div>
-               <h2>VR전용관 - 안전보건공단</h2>
-               <p style='line-height : 2rem;'>참여했던 안전보건공단 운영 프로젝트 사이트입니다.
+               <h2>안전보건공단 웹/앱 운영 프로젝트 </h2>
+               <p style='line-height : 2rem;'> 2018-09-01 ~ 2019-09-01
+               </p>
+               <p style='line-height : 2rem;'>참여했던 안전보건공단 운영 프로젝트 사이트입니다. 안전보건교육 프로세스 개선 기획서 작성을 통해 고객 VOC 50% 이상
+                  감소시켰습니다. 30명 이상이 참석한 앱 사용성 테스트 보고서를 작성했습니다. 각 사업장별 주문수량 제한 기능 FO/BO 화면 기획을 했습니다. 콘텐츠 제작 신청, 공지사항, 고객의
+                  소리 등 기초적인 신규 페이지 기획서를 작성했습니다.
                </p>
                <button class='btn-github pointer-enter' onclick="window.open('https://360vr.kosha.or.kr/main');">Web
                   Site</button>
             </div>
-            <div class='project-wrapper'>
+            <!-- <div class='project-wrapper'>
                <div class='project pointer-enter'>
                   <img src="images/projects/project-7.jpg">
                </div>
@@ -193,21 +253,8 @@
                <p style='line-height : 2rem;'>참여했던 안전보건공단 운영 프로젝트 사이트입니다.</p>
                <button class='btn-github pointer-enter' onclick="window.open('https://media.kosha.or.kr/main');">Web
                   Site</button>
-            </div>
+            </div> -->
          </div>
-         <!-- End of Projects -->
-         <!-- Project Hide Button -->
-         <button class="project-hide-btn">&laquo;Close</button>
-         <!-- End of Project Hide Button -->
-         <!-- 프로젝트 버튼 -->
-         <a href="#" class='main-btn projects-btn temp'>
-            <div class='main-btn-content center'>
-               <div class='main-btn-line'></div>
-               <div class='main-btn-line'></div>
-               <div class='main-btn-line'></div>
-               <span>Show More</span>
-            </div>
-         </a>
          <!-- 프로젝트 버튼 종료 -->
       </section>
       <!-- End of Section 3 -->

@@ -365,7 +365,7 @@ projects.forEach((project, i) => {
   //   }
 
   projectWrappers.forEach((projectWrapper, i) => {
-    if (i >= 30) {
+    if (i >= 15) {
       projectWrapper.style.cssText = 'display: none; opacity: 0;';
     }
   });
